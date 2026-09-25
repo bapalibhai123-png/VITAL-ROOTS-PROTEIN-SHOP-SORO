@@ -1,210 +1,207 @@
-/* =========================================================
+/* =====================================================
    VITAL ROOTS
-   DEMO PROTEIN / NUTRITION SHOP
-
-   WhatsApp:
-   7077247074
-========================================================= */
+   MOBILE-FIRST NUTRITION SHOP
+===================================================== */
 
 
-/* ================= WHATSAPP NUMBER ================= */
+/* ================= SHOP DETAILS ================= */
 
 const WHATSAPP_NUMBER = "917077247074";
 
+const SHOP_NAME = "Vital Roots";
 
-/* =========================================================
-   PRODUCT BANK
+const SHOP_LOCATION = "Soro, Odisha";
 
-   FUTURE:
-   You only need to edit products here.
-========================================================= */
+
+
+/* ================= PRODUCT DATABASE ================= */
 
 const products = [
 
-  {
-    id: 1,
+    {
+        id: 1,
 
-    name: "Whey Protein",
+        name: "Whey Protein",
 
-    category: "protein",
+        brand: "MuscleBlaze",
 
-    label: "Protein",
+        category: "protein",
 
-    price: "Demo Price",
+        price: "Demo Price",
 
-    image:
-      "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&w=900&q=85",
+        image:
+        "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&w=900&q=90",
 
-    short:
-      "Protein supplement for daily nutrition and training support.",
+        description:
+        "Quality whey protein for daily protein intake and training support.",
 
-    benefits:
-      "Provides dietary protein that can help support daily protein intake and muscle recovery when combined with a balanced diet and appropriate exercise.",
+        benefits:
+        "Helps support daily protein intake and muscle recovery when combined with proper nutrition and exercise.",
 
-    use:
-      "Mix the serving amount recommended on the product's original label with water or another suitable beverage. Follow the actual label instructions.",
+        use:
+        "Use according to the serving instructions printed on the actual product label.",
 
-    ingredients:
-      "Demo listing — replace with the exact ingredient list printed on the actual product label.",
+        ingredients:
+        "Demo information. Replace this with the exact ingredient list from the original product label.",
 
-    auth:
-      "For the final website, add the exact authenticity method available for the product, such as batch/QR verification, invoice information or manufacturer verification."
-  },
+        authenticity:
+        "For the final website, add the actual manufacturer's batch, QR, seal or authenticity verification method."
+    },
 
 
-  {
-    id: 2,
+    {
+        id: 2,
 
-    name: "Creatine Monohydrate",
+        name: "Gold Standard Whey",
 
-    category: "performance",
+        brand: "Optimum Nutrition",
 
-    label: "Performance",
+        category: "protein",
 
-    price: "Demo Price",
+        price: "Demo Price",
 
-    image:
-      "https://images.unsplash.com/photo-1622484212850-eb596d769edc?auto=format&fit=crop&w=900&q=85",
+        image:
+        "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=90",
 
-    short:
-      "A popular sports-nutrition ingredient used around strength training.",
+        description:
+        "Popular whey protein product for active users.",
 
-    benefits:
-      "Creatine monohydrate is commonly used to support repeated high-intensity exercise performance and training capacity.",
+        benefits:
+        "Provides protein to support daily dietary protein needs and exercise recovery.",
 
-    use:
-      "Use the serving and timing recommended on the actual product label. Maintain normal hydration and follow professional advice when needed.",
+        use:
+        "Follow the exact serving instructions printed on the product label.",
 
-    ingredients:
-      "Demo listing — replace with the exact ingredient and allergen information from the product label.",
+        ingredients:
+        "Demo information. Add the exact ingredient panel from the product package.",
 
-    auth:
-      "Add the product's actual batch, seal, QR or manufacturer verification information before publishing."
-  },
+        authenticity:
+        "Use the manufacturer's official verification method and batch information for the final listing."
+    },
 
 
-  {
-    id: 3,
+    {
+        id: 3,
 
-    name: "Mass Gainer",
+        name: "Creatine Monohydrate",
 
-    category: "protein",
+        brand: "AS-IT-IS",
 
-    label: "Weight Support",
+        category: "performance",
 
-    price: "Demo Price",
+        price: "Demo Price",
 
-    image:
-      "https://images.unsplash.com/photo-1579722821273-0f6c7d44362f?auto=format&fit=crop&w=900&q=85",
+        image:
+        "https://images.unsplash.com/photo-1622484212850-eb596d769edc?auto=format&fit=crop&w=900&q=90",
 
-    short:
-      "Calorie and protein-focused nutrition product for active users.",
+        description:
+        "Creatine monohydrate for strength and high-intensity training support.",
 
-    benefits:
-      "Can help increase calorie and protein intake as part of an overall nutrition plan when extra energy intake is appropriate.",
+        benefits:
+        "Creatine monohydrate is commonly used to support repeated high-intensity exercise performance.",
 
-    use:
-      "Prepare according to the actual serving instructions on the label. Serving size can vary significantly between products.",
+        use:
+        "Follow the exact serving instructions on the actual product label.",
 
-    ingredients:
-      "Demo listing — replace with the exact protein sources, carbohydrate sources, flavors and other ingredients from the label.",
+        ingredients:
+        "Demo information. Replace with the exact ingredient details printed on the package.",
 
-    auth:
-      "Final listing should include the real manufacturer's authenticity verification details."
-  },
+        authenticity:
+        "Add the actual product batch and manufacturer's verification information."
+    },
 
 
-  {
-    id: 4,
+    {
+        id: 4,
 
-    name: "Fish Oil Omega-3",
+        name: "Mass Gainer",
 
-    category: "wellness",
+        brand: "MuscleTech",
 
-    label: "Wellness",
+        category: "protein",
 
-    price: "Demo Price",
+        price: "Demo Price",
 
-    image:
-      "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=900&q=85",
+        image:
+        "https://images.unsplash.com/photo-1579722821273-0f6c7d44362f?auto=format&fit=crop&w=900&q=90",
 
-    short:
-      "Omega-3 supplement for users who choose fish-oil nutrition products.",
+        description:
+        "Calorie and protein-focused nutrition product.",
 
-    benefits:
-      "Provides omega-3 fatty acids such as EPA and DHA. Exact amounts depend on the product label.",
+        benefits:
+        "Can help increase calorie and protein intake when additional energy intake is appropriate.",
 
-    use:
-      "Take only according to the actual product label. Check the label for serving size and EPA/DHA amounts.",
+        use:
+        "Prepare according to the actual serving instructions on the package.",
 
-    ingredients:
-      "Demo listing — replace with the exact oil source, EPA, DHA, capsule ingredients and allergen details.",
+        ingredients:
+        "Demo information. Replace with the exact protein, carbohydrate and other ingredients.",
 
-    auth:
-      "Add actual manufacturer, batch and verification information for the final product listing."
-  },
+        authenticity:
+        "Add the actual manufacturer's authentication information before publishing."
+    },
 
 
-  {
-    id: 5,
+    {
+        id: 5,
 
-    name: "Daily Multivitamin",
+        name: "Daily Multivitamin",
 
-    category: "wellness",
+        brand: "GNC",
 
-    label: "Vitamins",
+        category: "wellness",
 
-    price: "Demo Price",
+        price: "Demo Price",
 
-    image:
-      "https://images.unsplash.com/photo-1550572017-edd951aa8ca2?auto=format&fit=crop&w=900&q=85",
+        image:
+        "https://images.unsplash.com/photo-1550572017-edd951aa8ca2?auto=format&fit=crop&w=900&q=90",
 
-    short:
-      "A multivitamin/mineral product for convenient daily nutrition support.",
+        description:
+        "Daily vitamin and mineral nutrition support.",
 
-    benefits:
-      "Can provide selected vitamins and minerals when used as directed. It should complement, not replace, a balanced diet.",
+        benefits:
+        "Can provide selected vitamins and minerals when used as directed as part of a balanced diet.",
 
-    use:
-      "Follow the serving instructions on the actual label and do not exceed the stated dose.",
+        use:
+        "Follow the exact serving instructions on the product label.",
 
-    ingredients:
-      "Demo listing — replace with the exact vitamin, mineral and other ingredient panel from the product label.",
+        ingredients:
+        "Demo information. Replace with the actual vitamin and mineral ingredient panel.",
 
-    auth:
-      "Use the actual manufacturer's authenticity verification details on the final listing."
-  },
+        authenticity:
+        "Add actual manufacturer and product verification details."
+    },
 
 
-  {
-    id: 6,
+    {
+        id: 6,
 
-    name: "Pre-Workout",
+        name: "Whey Protein",
 
-    category: "performance",
+        brand: "Nutrabay",
 
-    label: "Training",
+        category: "protein",
 
-    price: "Demo Price",
+        price: "Demo Price",
 
-    image:
-      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=85",
+        image:
+        "https://images.unsplash.com/photo-1532384748853-8f54a8f476e2?auto=format&fit=crop&w=900&q=90",
 
-    short:
-      "Sports-nutrition product designed for use around training.",
+        description:
+        "Protein nutrition product for active lifestyles.",
 
-    benefits:
-      "Formulas vary widely. Depending on the ingredients, pre-workout products may be used to support alertness, focus or training performance.",
+        benefits:
+        "Provides dietary protein to help meet daily protein requirements.",
 
-    use:
-      "Follow the exact label directions. Check caffeine content if present and avoid exceeding the stated serving.",
+        use:
+        "Use according to the instructions printed on the actual product.",
 
-    ingredients:
-      "Demo listing — replace with the exact ingredient panel and caffeine amount, if any.",
+        ingredients:
+        "Demo information. Replace with exact label ingredients.",
 
-    auth:
-      "Add the actual seal, batch, QR or manufacturer verification information."
-  }
+        authenticity:
+        "Add the actual manufacturer's authentication process."
+    }
 
 ];
 
@@ -212,267 +209,310 @@ const products = [
 
 /* ================= PRODUCT GRID ================= */
 
-const grid =
-  document.getElementById("productGrid");
+const productGrid =
+    document.getElementById("productGrid");
 
 
-function renderProducts(category = "all") {
 
-  const list =
-    category === "all"
-      ? products
-      : products.filter(
-          p => p.category === category
+function renderProducts(
+    brand = "all"
+) {
+
+    let list = products;
+
+
+    if (brand !== "all") {
+
+        list = products.filter(
+            product =>
+                product.brand === brand
         );
 
-
-  grid.innerHTML = list.map(p => `
-
-    <article
-      class="product-card"
-      onclick="openProduct(${p.id})"
-    >
-
-      <img
-        class="product-img"
-        src="${p.image}"
-        alt="${p.name}"
-        loading="lazy"
-
-        onerror="
-          this.src='https://placehold.co/900x700/111713/55d68a?text=Vital+Roots'
-        "
-      >
+    }
 
 
-      <div class="product-info">
+    if (list.length === 0) {
 
-        <span class="pill">
-          ${p.label}
-        </span>
+        list = products;
 
-
-        <h3>
-          ${p.name}
-        </h3>
+    }
 
 
-        <p>
-          ${p.short}
-        </p>
+    productGrid.innerHTML = list.map(product => `
+
+        <article
+            class="product-card"
+            onclick="openProduct(${product.id})"
+        >
+
+            <img
+                class="product-image"
+                src="${product.image}"
+                alt="${product.name}"
+                loading="lazy"
+
+                onerror="
+                this.src='https://placehold.co/800x800/101612/52d889?text=Vital+Roots'
+                "
+            >
 
 
-        <div class="price-row">
+            <div class="product-info">
 
-          <span class="price">
-            ${p.price}
-          </span>
+                <span class="product-brand">
+                    ${product.brand}
+                </span>
 
-          <span class="view-btn">
-            View Details →
-          </span>
 
-        </div>
+                <h3 class="product-name">
+                    ${product.name}
+                </h3>
 
-      </div>
 
-    </article>
+                <p class="product-desc">
+                    ${product.description}
+                </p>
 
-  `).join("");
+
+                <div class="product-bottom">
+
+                    <span class="product-price">
+                        ${product.price}
+                    </span>
+
+
+                    <span class="details">
+                        DETAILS →
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    `).join("");
 
 }
 
 
 
-/* ================= MODAL ================= */
+/* ================= BRAND FILTER ================= */
+
+function filterBrand(brand) {
+
+    renderProducts(brand);
+
+    document
+        .getElementById("products")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+
+/* ================= PRODUCT MODAL ================= */
 
 const modal =
-  document.getElementById("productModal");
+    document.getElementById("productModal");
 
 
 
 function openProduct(id) {
 
-  const p =
-    products.find(
-      x => x.id === id
-    );
+    const product =
+        products.find(
+            item => item.id === id
+        );
 
 
-  if (!p) return;
+    if (!product) return;
 
 
-  document.getElementById("modalImage").src =
-    p.image;
+    document.getElementById(
+        "detailImage"
+    ).src = product.image;
 
 
-  document.getElementById("modalImage").alt =
-    p.name;
+    document.getElementById(
+        "detailImage"
+    ).alt = product.name;
 
 
-  document.getElementById("modalCategory").textContent =
-    p.label;
+    document.getElementById(
+        "detailBrand"
+    ).textContent = product.brand;
 
 
-  document.getElementById("modalName").textContent =
-    p.name;
+    document.getElementById(
+        "detailName"
+    ).textContent = product.name;
 
 
-  document.getElementById("modalPrice").textContent =
-    p.price;
+    document.getElementById(
+        "detailPrice"
+    ).textContent = product.price;
 
 
-  document.getElementById("modalBenefits").textContent =
-    p.benefits;
+    document.getElementById(
+        "detailBenefits"
+    ).textContent = product.benefits;
 
 
-  document.getElementById("modalUse").textContent =
-    p.use;
+    document.getElementById(
+        "detailUse"
+    ).textContent = product.use;
 
 
-  document.getElementById("modalIngredients").textContent =
-    p.ingredients;
+    document.getElementById(
+        "detailIngredients"
+    ).textContent = product.ingredients;
 
 
-  document.getElementById("modalAuth").textContent =
-    p.auth;
+    document.getElementById(
+        "detailAuth"
+    ).textContent = product.authenticity;
 
 
 
-  /* ================= PRODUCT WHATSAPP ================= */
+    /* ================= WHATSAPP PRODUCT MESSAGE ================= */
 
-  document.getElementById("modalOrder").onclick = () => {
+    document.getElementById(
+        "whatsappProduct"
+    ).onclick = function() {
 
-    const message =
+        const message =
 
-`Welcome to Vital Roots! 🌿
+`🌿 Welcome to Vital Roots!
 
 Thank you for choosing Vital Roots.
 We provide authentic and quality nutrition products.
 
-Vital Roots କୁ ସ୍ୱାଗତ! 🌿
+🙏 Vital Roots କୁ ସ୍ୱାଗତ!
 
 ଆମ ପାଖରେ authentic ଏବଂ quality nutrition products ଉପଲବ୍ଧ ଅଛି।
 
-🛒 Product: ${p.name}
+🛒 Product:
+${product.name}
 
-💰 Price: ${p.price}
+🏷️ Brand:
+${product.brand}
+
+💰 Price:
+${product.price}
 
 I would like to order this product.
-Please share availability and delivery details.
+Please confirm availability, final price and delivery details.
 
 ମୁଁ ଏହି product ଅର୍ଡର କରିବାକୁ ଚାହୁଁଛି।
-ଦୟାକରି availability ଏବଂ delivery details ଜଣାନ୍ତୁ।
+ଦୟାକରି availability, final price ଏବଂ delivery details ଜଣାନ୍ତୁ।
 
-Thank you — Vital Roots 🌿`;
+📍 Vital Roots
+Soro, Odisha
+
+Thank you! 🌿`;
+
+
+        openWhatsApp(message);
+
+    };
+
+
+    modal.classList.add("show");
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+
+/* ================= CLOSE PRODUCT ================= */
+
+function closeProduct() {
+
+    modal.classList.remove("show");
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+
+/* ================= GENERAL WHATSAPP ================= */
+
+function openGeneralWhatsApp() {
+
+    const message =
+
+`🌿 Welcome to Vital Roots!
+
+Thank you for contacting us.
+
+We provide authentic and quality nutrition products.
+
+🙏 Vital Roots କୁ ସ୍ୱାଗତ!
+
+ଆମେ authentic ଏବଂ quality nutrition products ପ୍ରଦାନ କରୁଛୁ।
+
+I would like to know about your available products, prices and offers.
+
+ମୁଁ ଆପଣଙ୍କ available products, prices ଏବଂ offers ବିଷୟରେ ଜାଣିବାକୁ ଚାହୁଁଛି।
+
+Please share the details.
+
+📍 Vital Roots
+Soro, Odisha
+
+Thank you! 🌿`;
 
 
     openWhatsApp(message);
 
-  };
-
-
-
-  modal.classList.add("show");
-
-  modal.setAttribute(
-    "aria-hidden",
-    "false"
-  );
-
-
-  document.body.style.overflow =
-    "hidden";
-
 }
 
 
 
-/* ================= CLOSE MODAL ================= */
-
-function closeModal() {
-
-  modal.classList.remove("show");
-
-  modal.setAttribute(
-    "aria-hidden",
-    "true"
-  );
-
-
-  document.body.style.overflow =
-    "";
-
-}
-
-
-
-/* ================= WHATSAPP ================= */
+/* ================= WHATSAPP FUNCTION ================= */
 
 function openWhatsApp(message) {
 
-  const url =
-    `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    const url =
+        "https://wa.me/" +
+        WHATSAPP_NUMBER +
+        "?text=" +
+        encodeURIComponent(message);
 
 
-  window.open(
-    url,
-    "_blank"
-  );
+    window.open(
+        url,
+        "_blank"
+    );
 
 }
 
 
 
-/* ================= CATEGORY FILTER ================= */
-
-document
-  .querySelectorAll(".filter")
-  .forEach(btn => {
-
-    btn.addEventListener(
-      "click",
-      () => {
-
-        document
-          .querySelectorAll(".filter")
-          .forEach(
-            b =>
-              b.classList.remove("active")
-          );
-
-
-        btn.classList.add("active");
-
-
-        renderProducts(
-          btn.dataset.category
-        );
-
-      }
-    );
-
-  });
-
-
-
-/* ================= ESCAPE KEY ================= */
+/* ================= ESCAPE ================= */
 
 document.addEventListener(
-  "keydown",
-  e => {
+    "keydown",
+    function(event) {
 
-    if (e.key === "Escape") {
+        if (event.key === "Escape") {
 
-      closeModal();
+            closeProduct();
+
+        }
 
     }
-
-  }
 );
 
 
 
-/* ================= START WEBSITE ================= */
+/* ================= START ================= */
 
-renderProducts();
+renderProducts("all");
