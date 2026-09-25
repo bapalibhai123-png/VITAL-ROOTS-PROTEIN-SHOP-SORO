@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#08100d">
   <meta name="description" content="Vital Roots - Fitness, Protein and Nutrition Store">
   <title>Vital Roots | Fitness & Nutrition Store</title>
   <link rel="stylesheet" href="style.css">
@@ -10,18 +11,21 @@
 
 <body>
 
+<!-- ================= HEADER ================= -->
+
 <header class="site-header">
   <div class="header-inner">
 
     <a href="#" class="logo">
       <span class="logo-mark">VR</span>
-      <span>
+
+      <span class="logo-text">
         <strong>Vital Roots</strong>
         <small>Fitness • Nutrition • Wellness</small>
       </span>
     </a>
 
-    <nav>
+    <nav class="desktop-nav">
       <a href="#shop">Shop</a>
       <a href="#brands">Brands</a>
       <a href="#about">About</a>
@@ -31,8 +35,10 @@
     <a
       class="header-wa"
       href="https://wa.me/917077247074"
-      target="_blank">
-      WhatsApp
+      target="_blank"
+      rel="noopener">
+      <span>💬</span>
+      <span>WhatsApp</span>
     </a>
 
   </div>
@@ -71,7 +77,8 @@
       <a
         href="https://wa.me/917077247074?text=Hello%20Vital%20Roots%2C%20I%20want%20to%20know%20about%20your%20products."
         class="btn btn-outline"
-        target="_blank">
+        target="_blank"
+        rel="noopener">
         Order on WhatsApp
       </a>
 
@@ -79,7 +86,7 @@
 
     <div class="hero-location">
       📍 Soro, Odisha
-      &nbsp; • &nbsp;
+      <span>•</span>
       📞 7077247074
     </div>
 
@@ -159,7 +166,7 @@
 
   <div class="shop-layout">
 
-    <!-- BRAND PANEL -->
+    <!-- MOBILE / DESKTOP BRAND FILTER -->
 
     <aside class="brand-panel">
 
@@ -168,42 +175,49 @@
       </div>
 
       <button
+        type="button"
         class="brand-btn active"
         data-brand="All">
-        All Products
+        All
       </button>
 
       <button
+        type="button"
         class="brand-btn"
         data-brand="MuscleBlaze">
         MB
       </button>
 
       <button
+        type="button"
         class="brand-btn"
         data-brand="Optimum Nutrition">
         ON
       </button>
 
       <button
+        type="button"
         class="brand-btn"
         data-brand="AS-IT-IS">
         AS-IT-IS
       </button>
 
       <button
+        type="button"
         class="brand-btn"
         data-brand="MuscleTech">
         MuscleTech
       </button>
 
       <button
+        type="button"
         class="brand-btn"
         data-brand="GNC">
         GNC
       </button>
 
       <button
+        type="button"
         class="brand-btn"
         data-brand="Nutrabay">
         Nutrabay
@@ -213,10 +227,12 @@
 
 
     <div class="product-area">
+
       <div
         class="products-grid"
         id="productsGrid">
       </div>
+
     </div>
 
   </div>
@@ -323,7 +339,8 @@
     <a
       class="btn btn-primary"
       href="https://wa.me/917077247074?text=Hello%20Vital%20Roots%2C%20I%20need%20help%20choosing%20a%20supplement."
-      target="_blank">
+      target="_blank"
+      rel="noopener">
 
       Talk on WhatsApp
 
@@ -418,7 +435,7 @@
   class="contact-section"
   id="contact">
 
-  <div>
+  <div class="contact-text">
 
     <span class="eyebrow">
       READY TO ORDER?
@@ -440,7 +457,8 @@
   <a
     class="btn btn-light"
     href="https://wa.me/917077247074?text=Hello%20Vital%20Roots%20%F0%9F%8C%BF%2C%20I%20want%20to%20place%20an%20order."
-    target="_blank">
+    target="_blank"
+    rel="noopener">
 
     💬 WhatsApp Us
 
@@ -464,11 +482,16 @@
   </div>
 
 
-  <div class="modal-box">
+  <div
+    class="modal-box"
+    role="dialog"
+    aria-modal="true">
 
     <button
+      type="button"
       class="modal-close"
-      onclick="closeProduct()">
+      onclick="closeProduct()"
+      aria-label="Close product details">
       ×
     </button>
 
@@ -544,9 +567,10 @@
         id="modalWhatsapp"
         class="btn btn-primary modal-order"
         href="#"
-        target="_blank">
+        target="_blank"
+        rel="noopener">
 
-        Order / Ask on WhatsApp
+        💬 Order / Ask on WhatsApp
 
       </a>
 
@@ -562,7 +586,9 @@
 <a
   class="floating-wa"
   href="https://wa.me/917077247074?text=Hello%20Vital%20Roots%20%F0%9F%8C%BF%2C%20I%20want%20to%20know%20about%20your%20supplements."
-  target="_blank">
+  target="_blank"
+  rel="noopener"
+  aria-label="WhatsApp Vital Roots">
 
   💬
 
