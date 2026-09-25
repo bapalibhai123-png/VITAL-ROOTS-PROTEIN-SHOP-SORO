@@ -1,518 +1,793 @@
-/* =====================================================
-   VITAL ROOTS
-   MOBILE-FIRST NUTRITION SHOP
-===================================================== */
-
-
-/* ================= SHOP DETAILS ================= */
-
 const WHATSAPP_NUMBER = "917077247074";
 
-const SHOP_NAME = "Vital Roots";
 
-const SHOP_LOCATION = "Soro, Odisha";
+/* =====================================================
+   FALLBACK PRODUCT IMAGE
+===================================================== */
+
+const fallbackImage =
+  "data:image/svg+xml;charset=UTF-8," +
+  encodeURIComponent(`
+  <svg xmlns="http://www.w3.org/2000/svg"
+       width="700"
+       height="700"
+       viewBox="0 0 700 700">
+
+    <rect width="700"
+          height="700"
+          fill="#101713"/>
+
+    <rect x="35"
+          y="35"
+          width="630"
+          height="630"
+          rx="40"
+          fill="#16221c"
+          stroke="#b7ff35"
+          stroke-width="3"/>
+
+    <text x="350"
+          y="315"
+          fill="#b7ff35"
+          font-family="Arial"
+          font-size="62"
+          font-weight="900"
+          text-anchor="middle">
+      VITAL
+    </text>
+
+    <text x="350"
+          y="385"
+          fill="#ffffff"
+          font-family="Arial"
+          font-size="62"
+          font-weight="900"
+          text-anchor="middle">
+      ROOTS
+    </text>
+
+    <text x="350"
+          y="445"
+          fill="#9ba89f"
+          font-family="Arial"
+          font-size="22"
+          text-anchor="middle">
+      PRODUCT IMAGE
+    </text>
+
+  </svg>
+  `);
 
 
-
-/* ================= PRODUCT DATABASE ================= */
+/* =====================================================
+   PRODUCT DATABASE
+===================================================== */
 
 const products = [
 
-    {
-        id: 1,
+  {
+    id: 1,
 
-        name: "Whey Protein",
+    brand: "MuscleBlaze",
 
-        brand: "MuscleBlaze",
+    name: "Biozyme Performance Whey",
 
-        category: "protein",
+    category: "Whey Protein",
 
-        price: "Demo Price",
+    image:
+      "https://img2.hkrtcdn.com/37799/prd_3779821-MuscleBlaze-Biozyme-Performance-Whey-4.4-lb-Chocolate-Peanut-Butter_o.jpg",
 
-        image:
-        "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&w=900&q=90",
+    benefits:
+      "Protein supplement designed to support daily protein intake, muscle recovery and training nutrition.",
 
-        description:
-        "Quality whey protein for daily protein intake and training support.",
+    use:
+      "Use according to the product label. Mix the recommended serving with water or another suitable beverage.",
 
-        benefits:
-        "Helps support daily protein intake and muscle recovery when combined with proper nutrition and exercise.",
+    ingredients:
+      "Whey protein and flavouring ingredients. Check the original product packaging for the exact current ingredient and nutrition information."
+  },
 
-        use:
-        "Use according to the serving instructions printed on the actual product label.",
 
-        ingredients:
-        "Demo information. Replace this with the exact ingredient list from the original product label.",
+  {
+    id: 2,
 
-        authenticity:
-        "For the final website, add the actual manufacturer's batch, QR, seal or authenticity verification method."
-    },
+    brand: "MuscleBlaze",
 
+    name: "Biozyme Gold 100% Whey",
 
-    {
-        id: 2,
+    category: "Whey Protein",
 
-        name: "Gold Standard Whey",
+    image:
+      "https://img2.hkrtcdn.com/36006/prd_3600571-MuscleBlaze-Biozyme-Gold-100-Whey-4.4-lb-Double-Rich-Chocolate_o.jpg",
 
-        brand: "Optimum Nutrition",
+    benefits:
+      "Whey-based protein option for people looking to increase protein intake around their fitness routine.",
 
-        category: "protein",
+    use:
+      "Follow the serving instruction printed on the pack.",
 
-        price: "Demo Price",
+    ingredients:
+      "Whey protein blend and other product ingredients. Refer to the current package label for exact details."
+  },
 
-        image:
-        "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=90",
 
-        description:
-        "Popular whey protein product for active users.",
+  {
+    id: 3,
 
-        benefits:
-        "Provides protein to support daily dietary protein needs and exercise recovery.",
+    brand: "MuscleBlaze",
 
-        use:
-        "Follow the exact serving instructions printed on the product label.",
+    name: "Biozyme Whey PR",
 
-        ingredients:
-        "Demo information. Add the exact ingredient panel from the product package.",
+    category: "Whey Protein",
 
-        authenticity:
-        "Use the manufacturer's official verification method and batch information for the final listing."
-    },
+    image:
+      "https://img6.hkrtcdn.com/45075/prd_4507455_o.jpg",
 
+    benefits:
+      "Protein support for regular training and recovery nutrition.",
 
-    {
-        id: 3,
+    use:
+      "Take the recommended serving as stated on the product packaging.",
 
-        name: "Creatine Monohydrate",
+    ingredients:
+      "Whey protein and product-specific ingredients. Verify the current label for exact composition."
+  },
 
-        brand: "AS-IT-IS",
 
-        category: "performance",
+  {
+    id: 4,
 
-        price: "Demo Price",
+    brand: "MuscleBlaze",
 
-        image:
-        "https://images.unsplash.com/photo-1622484212850-eb596d769edc?auto=format&fit=crop&w=900&q=90",
+    name: "Biozyme Iso-Zero",
 
-        description:
-        "Creatine monohydrate for strength and high-intensity training support.",
+    category: "Whey Isolate",
 
-        benefits:
-        "Creatine monohydrate is commonly used to support repeated high-intensity exercise performance.",
+    image:
+      "https://img8.hkrtcdn.com/39048/prd_3904787-MuscleBlaze-Biozyme-IsoZero-2.2-lb-Low-Carb-Unflavoured_o.jpg",
 
-        use:
-        "Follow the exact serving instructions on the actual product label.",
+    benefits:
+      "Whey-isolate style protein option with a focus on protein intake and a lower-carb profile.",
 
-        ingredients:
-        "Demo information. Replace with the exact ingredient details printed on the package.",
+    use:
+      "Mix the labelled serving with water or a preferred beverage according to pack directions.",
 
-        authenticity:
-        "Add the actual product batch and manufacturer's verification information."
-    },
+    ingredients:
+      "Whey protein isolate and product-specific ingredients. Check the current label."
+  },
 
 
-    {
-        id: 4,
+  {
+    id: 5,
 
-        name: "Mass Gainer",
+    brand: "MuscleBlaze",
 
-        brand: "MuscleTech",
+    name: "Creatine Monohydrate CreAMP",
 
-        category: "protein",
+    category: "Creatine",
 
-        price: "Demo Price",
+    image:
+      "https://img8.hkrtcdn.com/35711/prd_3571057-MuscleBlaze-Creatine-Monohydrate-CreAMP-0.22-lb-Unflavoured_o.jpg",
 
-        image:
-        "https://images.unsplash.com/photo-1579722821273-0f6c7d44362f?auto=format&fit=crop&w=900&q=90",
+    benefits:
+      "Creatine monohydrate is commonly used to support strength, power and high-intensity exercise performance.",
 
-        description:
-        "Calorie and protein-focused nutrition product.",
+    use:
+      "Use the serving size and timing recommended on the current product label.",
 
-        benefits:
-        "Can help increase calorie and protein intake when additional energy intake is appropriate.",
+    ingredients:
+      "Creatine monohydrate. Confirm exact serving and formulation on the package."
+  },
 
-        use:
-        "Prepare according to the actual serving instructions on the package.",
 
-        ingredients:
-        "Demo information. Replace with the exact protein, carbohydrate and other ingredients.",
+  {
+    id: 6,
 
-        authenticity:
-        "Add the actual manufacturer's authentication information before publishing."
-    },
+    brand: "MuscleBlaze",
 
+    name: "CreAMP Citrus Blast",
 
-    {
-        id: 5,
+    category: "Creatine",
 
-        name: "Daily Multivitamin",
+    image:
+      "https://img10.hkrtcdn.com/42400/prd_4239949-MuscleBlaze-Creatine-Monohydrate-CreAMP-0.26-lb-Citrus-Blast_o.jpg",
 
-        brand: "GNC",
+    benefits:
+      "Flavoured creatine option for convenient daily creatine supplementation.",
 
-        category: "wellness",
+    use:
+      "Follow the current package directions for serving size and preparation.",
 
-        price: "Demo Price",
+    ingredients:
+      "Creatine monohydrate with flavouring ingredients. Check the package for exact details."
+  },
 
-        image:
-        "https://images.unsplash.com/photo-1550572017-edd951aa8ca2?auto=format&fit=crop&w=900&q=90",
 
-        description:
-        "Daily vitamin and mineral nutrition support.",
+  {
+    id: 7,
 
-        benefits:
-        "Can provide selected vitamins and minerals when used as directed as part of a balanced diet.",
+    brand: "MuscleBlaze",
 
-        use:
-        "Follow the exact serving instructions on the product label.",
+    name: "Pre Workout WrathX",
 
-        ingredients:
-        "Demo information. Replace with the actual vitamin and mineral ingredient panel.",
+    category: "Pre-Workout",
 
-        authenticity:
-        "Add actual manufacturer and product verification details."
-    },
+    image:
+      "https://img2.hkrtcdn.com/40670/prd_4066901-MuscleBlaze-Pre-Workout-WrathX-0.75-lb-Cola-Frost_o.jpg",
 
+    benefits:
+      "Pre-workout product intended to support energy and workout focus.",
 
-    {
-        id: 6,
+    use:
+      "Follow the label carefully, especially serving guidance and caffeine information.",
 
-        name: "Whey Protein",
+    ingredients:
+      "Product-specific pre-workout blend. Check the current label for the complete ingredient list."
+  },
 
-        brand: "Nutrabay",
 
-        category: "protein",
+  {
+    id: 8,
 
-        price: "Demo Price",
+    brand: "MuscleBlaze",
 
-        image:
-        "https://images.unsplash.com/photo-1532384748853-8f54a8f476e2?auto=format&fit=crop&w=900&q=90",
+    name: "WrathX Sour Green",
 
-        description:
-        "Protein nutrition product for active lifestyles.",
+    category: "Pre-Workout",
 
-        benefits:
-        "Provides dietary protein to help meet daily protein requirements.",
+    image:
+      "https://img6.hkrtcdn.com/40790/prd_4078935-MuscleBlaze-Pre-Workout-WrathX-0.75-lb-Sour-Green_o.jpg",
 
-        use:
-        "Use according to the instructions printed on the actual product.",
+    benefits:
+      "Flavoured pre-workout option for training sessions.",
 
-        ingredients:
-        "Demo information. Replace with exact label ingredients.",
+    use:
+      "Use only as directed on the package and review stimulant/caffeine information before use.",
 
-        authenticity:
-        "Add the actual manufacturer's authentication process."
-    }
+    ingredients:
+      "Pre-workout blend with flavouring. Exact ingredients are listed on the current package."
+  },
+
+
+  {
+    id: 9,
+
+    brand: "MuscleBlaze",
+
+    name: "Omega 3 Fish Oil Gold",
+
+    category: "Fish Oil",
+
+    image:
+      "https://img8.hkrtcdn.com/32066/prd_3206537-MuscleBlaze-Omega-3-Fish-Oil-Gold-3x-Triple-Strength-EPA-DHA-60-capsules_o.jpg",
+
+    benefits:
+      "Omega-3 supplement providing EPA and DHA as listed on the product label.",
+
+    use:
+      "Take according to the product label.",
+
+    ingredients:
+      "Fish oil providing EPA and DHA. Verify exact amounts on the current package."
+  },
+
+
+  {
+    id: 10,
+
+    brand: "MuscleBlaze",
+
+    name: "High Protein Oats",
+
+    category: "Protein Food",
+
+    image:
+      "https://img6.hkrtcdn.com/42402/prd_4240195-MuscleBlaze-High-Protein-Oats-2.2-lb-Dark-Chocolate_o.jpg",
+
+    benefits:
+      "Convenient food option for adding oats and protein to a daily diet.",
+
+    use:
+      "Prepare according to package instructions.",
+
+    ingredients:
+      "Oats and product-specific protein/flavouring ingredients. Check the label."
+  },
+
+
+  {
+    id: 11,
+
+    brand: "MuscleBlaze",
+
+    name: "Biozyme 5 in 1 Multivitamin",
+
+    category: "Multivitamin",
+
+    image:
+      "https://img6.hkrtcdn.com/42754/prd_4275315-MuscleBlaze-Biozyme-5-in-1-Multivitamin-90-tablets-Unflavoured_o.jpg",
+
+    benefits:
+      "Multivitamin product intended to supplement dietary vitamin and mineral intake.",
+
+    use:
+      "Follow the serving instructions printed on the package.",
+
+    ingredients:
+      "Multiple vitamins, minerals and other ingredients. Refer to the current label."
+  },
+
+
+  {
+    id: 12,
+
+    brand: "MuscleBlaze",
+
+    name: "Beginner's Protein",
+
+    category: "Protein",
+
+    image:
+      "https://img2.hkrtcdn.com/39861/prd_3986061-MuscleBlaze-Beginners-Protein-1.1-lb-Chocolate_o.jpg",
+
+    benefits:
+      "Protein option for people beginning a fitness and nutrition routine.",
+
+    use:
+      "Follow the package serving instructions.",
+
+    ingredients:
+      "Protein blend and flavouring ingredients. Check the package for exact composition."
+  },
+
+
+  {
+    id: 13,
+
+    brand: "Optimum Nutrition",
+
+    name: "Gold Standard 100% Whey",
+
+    category: "Whey Protein",
+
+    image:
+      "https://images-na.ssl-images-amazon.com/images/I/71H9zD8M5LL.jpg",
+
+    benefits:
+      "Whey protein product commonly used to increase daily protein intake.",
+
+    use:
+      "Follow the current product label for serving and preparation.",
+
+    ingredients:
+      "Whey protein blend and product-specific ingredients. Verify the current label."
+  },
+
+
+  {
+    id: 14,
+
+    brand: "AS-IT-IS",
+
+    name: "Whey Protein",
+
+    category: "Whey Protein",
+
+    image:
+      "https://via.placeholder.com/700x700/101713/b7ff35?text=AS-IT-IS",
+
+    benefits:
+      "Protein supplement option for increasing daily protein intake.",
+
+    use:
+      "Follow the serving directions on the original pack.",
+
+    ingredients:
+      "Product-specific whey protein formulation. Check the package label."
+  },
+
+
+  {
+    id: 15,
+
+    brand: "MuscleTech",
+
+    name: "NitroTech Whey",
+
+    category: "Whey Protein",
+
+    image:
+      "https://via.placeholder.com/700x700/101713/b7ff35?text=MUSCLETECH",
+
+    benefits:
+      "Protein supplement designed for convenient protein intake around a training routine.",
+
+    use:
+      "Use according to the current package directions.",
+
+    ingredients:
+      "Protein blend and other ingredients. Check the current product label."
+  },
+
+
+  {
+    id: 16,
+
+    brand: "GNC",
+
+    name: "Whey Protein",
+
+    category: "Whey Protein",
+
+    image:
+      "https://via.placeholder.com/700x700/101713/b7ff35?text=GNC",
+
+    benefits:
+      "Whey protein option for daily nutrition and protein intake.",
+
+    use:
+      "Follow the product label for serving size and preparation.",
+
+    ingredients:
+      "Product-specific protein formulation. Refer to the package."
+  },
+
+
+  {
+    id: 17,
+
+    brand: "Nutrabay",
+
+    name: "Whey Protein",
+
+    category: "Whey Protein",
+
+    image:
+      "https://via.placeholder.com/700x700/101713/b7ff35?text=NUTRABAY",
+
+    benefits:
+      "Protein supplement option for everyday fitness nutrition.",
+
+    use:
+      "Follow the package directions.",
+
+    ingredients:
+      "Product-specific whey formulation. Check the current label."
+  }
 
 ];
 
 
+/* =====================================================
+   VARIABLES
+===================================================== */
 
-/* ================= PRODUCT GRID ================= */
-
-const productGrid =
-    document.getElementById("productGrid");
-
-
-
-function renderProducts(
-    brand = "all"
-) {
-
-    let list = products;
+let activeBrand = "All";
 
 
-    if (brand !== "all") {
+/* =====================================================
+   TEXT SECURITY
+===================================================== */
 
-        list = products.filter(
-            product =>
-                product.brand === brand
+function safeText(value) {
+
+  return String(value ?? "")
+    .replace(/[&<>"']/g, function(char) {
+
+      return {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+      }[char];
+
+    });
+
+}
+
+
+/* =====================================================
+   IMAGE
+===================================================== */
+
+function safeImage(url) {
+
+  return url || fallbackImage;
+
+}
+
+
+function imageWithFallback(url, alt) {
+
+  return `
+    <img
+      src="${safeImage(url)}"
+      alt="${safeText(alt)}"
+      loading="lazy"
+      onerror="this.onerror=null;this.src='${fallbackImage}';">
+  `;
+
+}
+
+
+/* =====================================================
+   DISPLAY PRODUCTS
+===================================================== */
+
+function renderProducts() {
+
+  const grid =
+    document.getElementById("productsGrid");
+
+
+  const filtered =
+    activeBrand === "All"
+      ? products
+      : products.filter(
+          product => product.brand === activeBrand
         );
 
-    }
 
+  grid.innerHTML =
+    filtered.map(function(product) {
 
-    if (list.length === 0) {
-
-        list = products;
-
-    }
-
-
-    productGrid.innerHTML = list.map(product => `
+      return `
 
         <article
-            class="product-card"
-            onclick="openProduct(${product.id})"
-        >
+          class="product-card"
+          onclick="openProduct(${product.id})">
 
-            <img
-                class="product-image"
-                src="${product.image}"
-                alt="${product.name}"
-                loading="lazy"
+          <div class="product-img">
 
-                onerror="
-                this.src='https://placehold.co/800x800/101612/52d889?text=Vital+Roots'
-                "
-            >
+            ${imageWithFallback(
+              product.image,
+              product.name
+            )}
+
+          </div>
 
 
-            <div class="product-info">
+          <div class="product-content">
 
-                <span class="product-brand">
-                    ${product.brand}
-                </span>
-
-
-                <h3 class="product-name">
-                    ${product.name}
-                </h3>
-
-
-                <p class="product-desc">
-                    ${product.description}
-                </p>
-
-
-                <div class="product-bottom">
-
-                    <span class="product-price">
-                        ${product.price}
-                    </span>
-
-
-                    <span class="details">
-                        DETAILS →
-                    </span>
-
-                </div>
-
+            <div class="product-brand">
+              ${safeText(product.brand)}
             </div>
+
+            <div class="product-name">
+              ${safeText(product.name)}
+            </div>
+
+            <div class="product-cat">
+              ${safeText(product.category)}
+            </div>
+
+            <div class="view-product">
+              VIEW DETAILS →
+            </div>
+
+          </div>
 
         </article>
 
-    `).join("");
+      `;
+
+    }).join("");
 
 }
 
 
-
-/* ================= BRAND FILTER ================= */
-
-function filterBrand(brand) {
-
-    renderProducts(brand);
-
-    document
-        .getElementById("products")
-        .scrollIntoView({
-            behavior: "smooth"
-        });
-
-}
-
-
-
-/* ================= PRODUCT MODAL ================= */
-
-const modal =
-    document.getElementById("productModal");
-
-
+/* =====================================================
+   OPEN PRODUCT
+===================================================== */
 
 function openProduct(id) {
 
-    const product =
-        products.find(
-            item => item.id === id
-        );
+  const product =
+    products.find(item => item.id === id);
 
 
-    if (!product) return;
+  if (!product) return;
 
 
-    document.getElementById(
-        "detailImage"
-    ).src = product.image;
+  const modal =
+    document.getElementById("productModal");
 
 
-    document.getElementById(
-        "detailImage"
-    ).alt = product.name;
+  const modalImage =
+    document.getElementById("modalImage");
 
 
-    document.getElementById(
-        "detailBrand"
-    ).textContent = product.brand;
+  modalImage.src =
+    safeImage(product.image);
 
 
-    document.getElementById(
-        "detailName"
-    ).textContent = product.name;
+  modalImage.alt =
+    product.name;
 
 
-    document.getElementById(
-        "detailPrice"
-    ).textContent = product.price;
+  modalImage.onerror =
+    function() {
 
+      this.onerror = null;
 
-    document.getElementById(
-        "detailBenefits"
-    ).textContent = product.benefits;
-
-
-    document.getElementById(
-        "detailUse"
-    ).textContent = product.use;
-
-
-    document.getElementById(
-        "detailIngredients"
-    ).textContent = product.ingredients;
-
-
-    document.getElementById(
-        "detailAuth"
-    ).textContent = product.authenticity;
-
-
-
-    /* ================= WHATSAPP PRODUCT MESSAGE ================= */
-
-    document.getElementById(
-        "whatsappProduct"
-    ).onclick = function() {
-
-        const message =
-
-`🌿 Welcome to Vital Roots!
-
-Thank you for choosing Vital Roots.
-We provide authentic and quality nutrition products.
-
-🙏 Vital Roots କୁ ସ୍ୱାଗତ!
-
-ଆମ ପାଖରେ authentic ଏବଂ quality nutrition products ଉପଲବ୍ଧ ଅଛି।
-
-🛒 Product:
-${product.name}
-
-🏷️ Brand:
-${product.brand}
-
-💰 Price:
-${product.price}
-
-I would like to order this product.
-Please confirm availability, final price and delivery details.
-
-ମୁଁ ଏହି product ଅର୍ଡର କରିବାକୁ ଚାହୁଁଛି।
-ଦୟାକରି availability, final price ଏବଂ delivery details ଜଣାନ୍ତୁ।
-
-📍 Vital Roots
-Soro, Odisha
-
-Thank you! 🌿`;
-
-
-        openWhatsApp(message);
+      this.src = fallbackImage;
 
     };
 
 
-    modal.classList.add("show");
-
-    document.body.style.overflow =
-        "hidden";
-
-}
+  document.getElementById("modalBrand")
+    .textContent = product.brand;
 
 
-
-/* ================= CLOSE PRODUCT ================= */
-
-function closeProduct() {
-
-    modal.classList.remove("show");
-
-    document.body.style.overflow =
-        "";
-
-}
+  document.getElementById("modalName")
+    .textContent = product.name;
 
 
+  document.getElementById("modalCategory")
+    .textContent = product.category;
 
-/* ================= GENERAL WHATSAPP ================= */
 
-function openGeneralWhatsApp() {
+  document.getElementById("modalBenefits")
+    .textContent = product.benefits;
 
-    const message =
 
-`🌿 Welcome to Vital Roots!
+  document.getElementById("modalUse")
+    .textContent = product.use;
 
-Thank you for contacting us.
 
-We provide authentic and quality nutrition products.
+  document.getElementById("modalIngredients")
+    .textContent = product.ingredients;
 
-🙏 Vital Roots କୁ ସ୍ୱାଗତ!
 
-ଆମେ authentic ଏବଂ quality nutrition products ପ୍ରଦାନ କରୁଛୁ।
+  /* WHATSAPP MESSAGE */
 
-I would like to know about your available products, prices and offers.
+  const message =
 
-ମୁଁ ଆପଣଙ୍କ available products, prices ଏବଂ offers ବିଷୟରେ ଜାଣିବାକୁ ଚାହୁଁଛି।
+`🌿 WELCOME TO VITAL ROOTS 🌿
 
-Please share the details.
+Hello, I am interested in this product.
+
+📦 Product: ${product.name}
+🏷️ Brand: ${product.brand}
+📌 Category: ${product.category}
+
+💰 Please tell me the current price and availability.
+
+📏 Please also tell me the available size/flavour options.
 
 📍 Vital Roots
 Soro, Odisha
 
-Thank you! 🌿`;
+📞 7077247074
+
+━━━━━━━━━━━━━━
+
+ନମସ୍କାର 🙏
+
+ମୁଁ ଏହି ପ୍ରଡକ୍ଟ ବିଷୟରେ
+ଜାଣିବାକୁ ଚାହୁଁଛି।
+
+ଦୟାକରି ଏହାର ଦାମ ଏବଂ
+availability ବିଷୟରେ କୁହନ୍ତୁ।
+
+Thank you! 🙏`;
 
 
-    openWhatsApp(message);
+  document.getElementById("modalWhatsapp")
+    .href =
+      "https://wa.me/" +
+      WHATSAPP_NUMBER +
+      "?text=" +
+      encodeURIComponent(message);
+
+
+  modal.classList.add("show");
+
+  modal.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+
+  document.body.style.overflow =
+    "hidden";
 
 }
 
 
+/* =====================================================
+   CLOSE PRODUCT
+===================================================== */
 
-/* ================= WHATSAPP FUNCTION ================= */
+function closeProduct() {
 
-function openWhatsApp(message) {
-
-    const url =
-        "https://wa.me/" +
-        WHATSAPP_NUMBER +
-        "?text=" +
-        encodeURIComponent(message);
+  const modal =
+    document.getElementById("productModal");
 
 
-    window.open(
-        url,
-        "_blank"
+  modal.classList.remove("show");
+
+
+  modal.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+
+  document.body.style.overflow =
+    "";
+
+}
+
+
+/* =====================================================
+   BRAND FILTER
+===================================================== */
+
+document
+  .querySelectorAll(".brand-btn")
+  .forEach(function(button) {
+
+    button.addEventListener(
+      "click",
+      function() {
+
+        document
+          .querySelectorAll(".brand-btn")
+          .forEach(function(btn) {
+
+            btn.classList.remove(
+              "active"
+            );
+
+          });
+
+
+        this.classList.add("active");
+
+
+        activeBrand =
+          this.dataset.brand;
+
+
+        renderProducts();
+
+      }
     );
 
-}
+  });
 
 
-
-/* ================= ESCAPE ================= */
+/* =====================================================
+   ESCAPE CLOSE
+===================================================== */
 
 document.addEventListener(
-    "keydown",
-    function(event) {
+  "keydown",
+  function(event) {
 
-        if (event.key === "Escape") {
+    if (event.key === "Escape") {
 
-            closeProduct();
-
-        }
+      closeProduct();
 
     }
+
+  }
 );
 
 
+/* =====================================================
+   YEAR
+===================================================== */
 
-/* ================= START ================= */
+document.getElementById("year")
+  .textContent =
+  new Date().getFullYear();
 
-renderProducts("all");
+
+/* =====================================================
+   START
+===================================================== */
+
+renderProducts();
