@@ -1,1563 +1,837 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+const WHATSAPP_NUMBER = "917077247074";
 
-:root {
-  --bg: #08100d;
-  --card: #101a16;
-  --card2: #14211b;
-  --text: #f5f7f3;
-  --muted: #9ba89f;
-  --green: #b7ff35;
-  --green2: #83d900;
-  --line: rgba(183, 255, 53, 0.14);
-}
 
-html {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-}
+/* =====================================================
+   FALLBACK IMAGE
+===================================================== */
 
-body {
-  width: 100%;
-  min-width: 0;
-  overflow-x: hidden;
+const fallbackImage =
+  "data:image/svg+xml;charset=UTF-8," +
+  encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg"
+         width="700"
+         height="700"
+         viewBox="0 0 700 700">
 
-  font-family: Inter, Arial, Helvetica, sans-serif;
+      <rect
+        width="700"
+        height="700"
+        fill="#101713"/>
 
-  background: var(--bg);
-  color: var(--text);
+      <rect
+        x="35"
+        y="35"
+        width="630"
+        height="630"
+        rx="40"
+        fill="#16221c"
+        stroke="#b7ff35"
+        stroke-width="3"/>
 
-  line-height: 1.6;
-}
+      <text
+        x="350"
+        y="315"
+        fill="#b7ff35"
+        font-family="Arial"
+        font-size="62"
+        font-weight="900"
+        text-anchor="middle">
+        VITAL
+      </text>
 
-body.modal-open {
-  overflow: hidden;
-}
+      <text
+        x="350"
+        y="385"
+        fill="#ffffff"
+        font-family="Arial"
+        font-size="62"
+        font-weight="900"
+        text-anchor="middle">
+        ROOTS
+      </text>
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+      <text
+        x="350"
+        y="445"
+        fill="#9ba89f"
+        font-family="Arial"
+        font-size="22"
+        text-anchor="middle">
+        PRODUCT IMAGE
+      </text>
 
-button {
-  font: inherit;
-}
+    </svg>
+  `);
 
-img {
-  max-width: 100%;
+
+/* =====================================================
+   PRODUCT DATABASE
+===================================================== */
+
+const products = [
+
+  {
+    id: 1,
+
+    brand: "MuscleBlaze",
+
+    name: "Biozyme Performance Whey",
+
+    category: "Whey Protein",
+
+    image:
+      "https://img2.hkrtcdn.com/37799/prd_3779821-MuscleBlaze-Biozyme-Performance-Whey-4.4-lb-Chocolate-Peanut-Butter_o.jpg",
+
+    benefits:
+      "Protein supplement designed to support daily protein intake, muscle recovery and training nutrition.",
+
+    use:
+      "Use according to the product label. Mix the recommended serving with water or another suitable beverage.",
+
+    ingredients:
+      "Whey protein and flavouring ingredients. Check the original product packaging for exact current ingredient and nutrition information."
+  },
+
+
+  {
+    id: 2,
+
+    brand: "MuscleBlaze",
+
+    name: "Biozyme Gold 100% Whey",
+
+    category: "Whey Protein",
+
+    image:
+      "https://img2.hkrtcdn.com/36006/prd_3600571-MuscleBlaze-Biozyme-Gold-100-Whey-4.4-lb-Double-Rich-Chocolate_o.jpg",
+
+    benefits:
+      "Whey-based protein option for people looking to increase protein intake around their fitness routine.",
+
+    use:
+      "Follow the serving instruction printed on the pack.",
+
+    ingredients:
+      "Whey protein blend and other product ingredients. Refer to the current package label for exact details."
+  },
+
+
+  {
+    id: 3,
+
+    brand: "MuscleBlaze",
+
+    name: "Biozyme Whey PR",
+
+    category: "Whey Protein",
+
+    image:
+      "https://img6.hkrtcdn.com/45075/prd_4507455_o.jpg",
+
+    benefits:
+      "Protein support for regular training and recovery nutrition.",
+
+    use:
+      "Take the recommended serving as stated on the product packaging.",
+
+    ingredients:
+      "Whey protein and product-specific ingredients. Verify the current label for exact composition."
+  },
+
+
+  {
+    id: 4,
+
+    brand: "MuscleBlaze",
+
+    name: "Biozyme Iso-Zero",
+
+    category: "Whey Isolate",
+
+    image:
+      "https://img8.hkrtcdn.com/39048/prd_3904787-MuscleBlaze-Biozyme-IsoZero-2.2-lb-Low-Carb-Unflavoured_o.jpg",
+
+    benefits:
+      "Whey-isolate style protein option with a focus on protein intake and a lower-carb profile.",
+
+    use:
+      "Mix the labelled serving with water or a preferred beverage according to pack directions.",
+
+    ingredients:
+      "Whey protein isolate and product-specific ingredients. Check the current label."
+  },
+
+
+  {
+    id: 5,
+
+    brand: "MuscleBlaze",
+
+    name: "Creatine Monohydrate CreAMP",
+
+    category: "Creatine",
+
+    image:
+      "https://img8.hkrtcdn.com/35711/prd_3571057-MuscleBlaze-Creatine-Monohydrate-CreAMP-0.22-lb-Unflavoured_o.jpg",
+
+    benefits:
+      "Creatine monohydrate is commonly used to support strength, power and high-intensity exercise performance.",
+
+    use:
+      "Use the serving size and timing recommended on the current product label.",
+
+    ingredients:
+      "Creatine monohydrate. Confirm exact serving and formulation on the package."
+  },
+
+
+  {
+    id: 6,
+
+    brand: "MuscleBlaze",
+
+    name: "CreAMP Citrus Blast",
+
+    category: "Creatine",
+
+    image:
+      "https://img10.hkrtcdn.com/42400/prd_4239949-MuscleBlaze-Creatine-Monohydrate-CreAMP-0.26-lb-Citrus-Blast_o.jpg",
+
+    benefits:
+      "Flavoured creatine option for convenient daily creatine supplementation.",
+
+    use:
+      "Follow the current package directions for serving size and preparation.",
+
+    ingredients:
+      "Creatine monohydrate with flavouring ingredients. Check the package for exact details."
+  },
+
+
+  {
+    id: 7,
+
+    brand: "MuscleBlaze",
+
+    name: "Pre Workout WrathX",
+
+    category: "Pre-Workout",
+
+    image:
+      "https://img2.hkrtcdn.com/40670/prd_4066901-MuscleBlaze-Pre-Workout-WrathX-0.75-lb-Cola-Frost_o.jpg",
+
+    benefits:
+      "Pre-workout product intended to support energy and workout focus.",
+
+    use:
+      "Follow the label carefully, especially serving guidance and caffeine information.",
+
+    ingredients:
+      "Product-specific pre-workout blend. Check the current label for the complete ingredient list."
+  },
+
+
+  {
+    id: 8,
+
+    brand: "MuscleBlaze",
+
+    name: "WrathX Sour Green",
+
+    category: "Pre-Workout",
+
+    image:
+      "https://img6.hkrtcdn.com/40790/prd_4078935-MuscleBlaze-Pre-Workout-WrathX-0.75-lb-Sour-Green_o.jpg",
+
+    benefits:
+      "Flavoured pre-workout option for training sessions.",
+
+    use:
+      "Use only as directed on the package and review stimulant/caffeine information before use.",
+
+    ingredients:
+      "Pre-workout blend with flavouring. Exact ingredients are listed on the current package."
+  },
+
+
+  {
+    id: 9,
+
+    brand: "MuscleBlaze",
+
+    name: "Omega 3 Fish Oil Gold",
+
+    category: "Fish Oil",
+
+    image:
+      "https://img8.hkrtcdn.com/32066/prd_3206537-MuscleBlaze-Omega-3-Fish-Oil-Gold-3x-Triple-Strength-EPA-DHA-60-capsules_o.jpg",
+
+    benefits:
+      "Omega-3 supplement providing EPA and DHA as listed on the product label.",
+
+    use:
+      "Take according to the product label.",
+
+    ingredients:
+      "Fish oil providing EPA and DHA. Verify exact amounts on the current package."
+  },
+
+
+  {
+    id: 10,
+
+    brand: "MuscleBlaze",
+
+    name: "High Protein Oats",
+
+    category: "Protein Food",
+
+    image:
+      "https://img6.hkrtcdn.com/42402/prd_4240195-MuscleBlaze-High-Protein-Oats-2.2-lb-Dark-Chocolate_o.jpg",
+
+    benefits:
+      "Convenient food option for adding oats and protein to a daily diet.",
+
+    use:
+      "Prepare according to package instructions.",
+
+    ingredients:
+      "Oats and product-specific protein/flavouring ingredients. Check the label."
+  },
+
+
+  {
+    id: 11,
+
+    brand: "MuscleBlaze",
+
+    name: "Biozyme 5 in 1 Multivitamin",
+
+    category: "Multivitamin",
+
+    image:
+      "https://img6.hkrtcdn.com/42754/prd_4275315-MuscleBlaze-Biozyme-5-in-1-Multivitamin-90-tablets-Unflavoured_o.jpg",
+
+    benefits:
+      "Multivitamin product intended to supplement dietary vitamin and mineral intake.",
+
+    use:
+      "Follow the serving instructions printed on the package.",
+
+    ingredients:
+      "Multiple vitamins, minerals and other ingredients. Refer to the current label."
+  },
+
+
+  {
+    id: 12,
+
+    brand: "MuscleBlaze",
+
+    name: "Beginner's Protein",
+
+    category: "Protein",
+
+    image:
+      "https://img2.hkrtcdn.com/39861/prd_3986061-MuscleBlaze-Beginners-Protein-1.1-lb-Chocolate_o.jpg",
+
+    benefits:
+      "Protein option for people beginning a fitness and nutrition routine.",
+
+    use:
+      "Follow the package serving instructions.",
+
+    ingredients:
+      "Protein blend and flavouring ingredients. Check the package for exact composition."
+  },
+
+
+  {
+    id: 13,
+
+    brand: "Optimum Nutrition",
+
+    name: "Gold Standard 100% Whey",
+
+    category: "Whey Protein",
+
+    image:
+      "https://images-na.ssl-images-amazon.com/images/I/71H9zD8M5LL.jpg",
+
+    benefits:
+      "Whey protein product commonly used to increase daily protein intake.",
+
+    use:
+      "Follow the current product label for serving and preparation.",
+
+    ingredients:
+      "Whey protein blend and product-specific ingredients. Verify the current label."
+  },
+
+
+  {
+    id: 14,
+
+    brand: "AS-IT-IS",
+
+    name: "Whey Protein",
+
+    category: "Whey Protein",
+
+    image:
+      "https://via.placeholder.com/700x700/101713/b7ff35?text=AS-IT-IS",
+
+    benefits:
+      "Protein supplement option for increasing daily protein intake.",
+
+    use:
+      "Follow the serving directions on the original pack.",
+
+    ingredients:
+      "Product-specific whey protein formulation. Check the package label."
+  },
+
+
+  {
+    id: 15,
+
+    brand: "MuscleTech",
+
+    name: "NitroTech Whey",
+
+    category: "Whey Protein",
+
+    image:
+      "https://via.placeholder.com/700x700/101713/b7ff35?text=MUSCLETECH",
+
+    benefits:
+      "Protein supplement designed for convenient protein intake around a training routine.",
+
+    use:
+      "Use according to the current package directions.",
+
+    ingredients:
+      "Protein blend and other ingredients. Check the current product label."
+  },
+
+
+  {
+    id: 16,
+
+    brand: "GNC",
+
+    name: "Whey Protein",
+
+    category: "Whey Protein",
+
+    image:
+      "https://via.placeholder.com/700x700/101713/b7ff35?text=GNC",
+
+    benefits:
+      "Whey protein option for daily nutrition and protein intake.",
+
+    use:
+      "Follow the product label for serving size and preparation.",
+
+    ingredients:
+      "Product-specific protein formulation. Refer to the package."
+  },
+
+
+  {
+    id: 17,
+
+    brand: "Nutrabay",
+
+    name: "Whey Protein",
+
+    category: "Whey Protein",
+
+    image:
+      "https://via.placeholder.com/700x700/101713/b7ff35?text=NUTRABAY",
+
+    benefits:
+      "Protein supplement option for everyday fitness nutrition.",
+
+    use:
+      "Follow the package directions.",
+
+    ingredients:
+      "Product-specific whey formulation. Check the current label."
+  }
+
+];
+
+
+/* =====================================================
+   STATE
+===================================================== */
+
+let activeBrand = "All";
+
+
+/* =====================================================
+   TEXT HELPER
+===================================================== */
+
+function safeText(value) {
+
+  return String(value ?? "")
+    .replace(/[&<>"']/g, function(char) {
+
+      return {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+      }[char];
+
+    });
+
 }
 
 
 /* =====================================================
-   HEADER
+   IMAGE FALLBACK
 ===================================================== */
 
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
+function imageWithFallback(url, alt) {
 
-  width: 100%;
+  return `
+    <img
+      src="${url || fallbackImage}"
+      alt="${safeText(alt)}"
+      loading="lazy"
+      onerror="this.onerror=null;this.src='${fallbackImage}';">
+  `;
 
-  background: rgba(8, 16, 13, 0.94);
-
-  backdrop-filter: blur(18px);
-
-  border-bottom: 1px solid var(--line);
-}
-
-.header-inner {
-  width: 100%;
-  max-width: 1250px;
-
-  min-height: 70px;
-
-  margin: auto;
-
-  padding:
-    8px
-    max(14px, env(safe-area-inset-right))
-    8px
-    max(14px, env(safe-area-inset-left));
-
-  display: flex;
-  align-items: center;
-
-  gap: 10px;
-}
-
-.logo {
-  min-width: 0;
-
-  display: flex;
-  align-items: center;
-
-  gap: 8px;
-
-  margin-right: auto;
-}
-
-.logo-mark {
-  flex: 0 0 auto;
-
-  width: 42px;
-  height: 42px;
-
-  display: grid;
-  place-items: center;
-
-  border-radius: 13px;
-
-  background: var(--green);
-
-  color: #08100d;
-
-  font-weight: 1000;
-
-  font-size: 14px;
-}
-
-.logo-text {
-  min-width: 0;
-}
-
-.logo strong {
-  display: block;
-
-  font-size: 17px;
-
-  line-height: 1.1;
-
-  white-space: nowrap;
-}
-
-.logo small {
-  display: block;
-
-  color: var(--muted);
-
-  font-size: 8px;
-
-  white-space: nowrap;
-}
-
-.desktop-nav {
-  display: none;
-}
-
-.header-wa {
-  flex: 0 0 auto;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  gap: 4px;
-
-  background: var(--green);
-
-  color: #08100d;
-
-  padding: 9px 11px;
-
-  border-radius: 11px;
-
-  font-weight: 900;
-
-  font-size: 10px;
-
-  white-space: nowrap;
 }
 
 
 /* =====================================================
-   HERO
+   RENDER PRODUCTS
 ===================================================== */
 
-.hero {
-  width: 100%;
-  max-width: 1250px;
+function renderProducts() {
 
-  margin: auto;
+  const grid =
+    document.getElementById("productsGrid");
 
-  padding:
-    38px
-    max(15px, env(safe-area-inset-right))
-    35px
-    max(15px, env(safe-area-inset-left));
 
-  display: grid;
+  const filteredProducts =
+    activeBrand === "All"
+      ? products
+      : products.filter(function(product) {
 
-  grid-template-columns: 1fr;
+          return product.brand === activeBrand;
 
-  gap: 30px;
+        });
 
-  align-items: center;
-}
 
-.eyebrow {
-  display: block;
+  if (!filteredProducts.length) {
 
-  font-size: 9px;
+    grid.innerHTML = `
+      <div style="
+        grid-column:1/-1;
+        padding:30px;
+        text-align:center;
+        color:#9ba89f;">
+        No products found.
+      </div>
+    `;
 
-  line-height: 1.4;
+    return;
 
-  letter-spacing: 1.7px;
+  }
 
-  color: var(--green);
 
-  font-weight: 900;
-}
+  grid.innerHTML =
+    filteredProducts.map(function(product) {
 
-.hero h1 {
-  max-width: 600px;
+      return `
 
-  font-size: clamp(39px, 11vw, 78px);
+        <article
+          class="product-card"
+          onclick="openProduct(${product.id})">
 
-  line-height: 0.99;
+          <div class="product-img">
 
-  letter-spacing: -2px;
+            ${imageWithFallback(
+              product.image,
+              product.name
+            )}
 
-  margin: 12px 0 17px;
-}
+          </div>
 
-.hero h1 span,
-h2 span {
-  color: var(--green);
-}
 
-.hero p {
-  max-width: 560px;
+          <div class="product-content">
 
-  color: var(--muted);
+            <div class="product-brand">
+              ${safeText(product.brand)}
+            </div>
 
-  font-size: 14px;
+            <div class="product-name">
+              ${safeText(product.name)}
+            </div>
 
-  line-height: 1.65;
-}
+            <div class="product-cat">
+              ${safeText(product.category)}
+            </div>
 
-.hero-buttons {
-  width: 100%;
+            <div class="view-product">
+              VIEW DETAILS →
+            </div>
 
-  display: grid;
+          </div>
 
-  grid-template-columns: 1fr;
+        </article>
 
-  gap: 9px;
+      `;
 
-  margin: 22px 0 18px;
-}
+    }).join("");
 
-.btn {
-  min-height: 46px;
-
-  display: inline-flex;
-
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 12px;
-
-  padding: 11px 15px;
-
-  font-size: 12px;
-
-  font-weight: 900;
-
-  border: 1px solid transparent;
-
-  cursor: pointer;
-
-  text-align: center;
-}
-
-.btn-primary {
-  background: var(--green);
-
-  color: #08100d;
-}
-
-.btn-primary:active {
-  transform: scale(0.98);
-}
-
-.btn-outline {
-  border-color: var(--line);
-
-  color: var(--text);
-
-  background: rgba(255,255,255,0.01);
-}
-
-.hero-location {
-  display: flex;
-
-  flex-wrap: wrap;
-
-  gap: 7px;
-
-  color: #aebbb3;
-
-  font-size: 11px;
 }
 
 
 /* =====================================================
-   OWNER
+   OPEN PRODUCT
 ===================================================== */
 
-.hero-owner {
-  position: relative;
+function openProduct(id) {
 
-  width: 100%;
+  const product =
+    products.find(function(item) {
 
-  max-width: 450px;
+      return item.id === id;
 
-  min-height: 0;
+    });
 
-  margin: 0 auto;
 
-  display: flex;
+  if (!product) return;
 
-  justify-content: center;
 
-  align-items: center;
-}
+  const modal =
+    document.getElementById("productModal");
 
-.owner-glow {
-  position: absolute;
 
-  width: 75%;
-  aspect-ratio: 1;
+  const modalImage =
+    document.getElementById("modalImage");
 
-  border-radius: 50%;
 
-  background: rgba(183, 255, 53, 0.10);
+  modalImage.src =
+    product.image || fallbackImage;
 
-  filter: blur(42px);
-}
+  modalImage.alt =
+    product.name;
 
-.owner-photo {
-  position: relative;
 
-  display: block;
+  modalImage.onerror =
+    function() {
 
-  width: min(100%, 420px);
+      this.onerror = null;
 
-  height: min(88vw, 420px);
+      this.src = fallbackImage;
 
-  min-height: 300px;
+    };
 
-  object-fit: cover;
 
-  object-position: center;
+  document.getElementById("modalBrand")
+    .textContent = product.brand;
 
-  border-radius: 25px;
 
-  border: 1px solid rgba(183, 255, 53, 0.25);
+  document.getElementById("modalName")
+    .textContent = product.name;
 
-  box-shadow:
-    0 20px 60px rgba(0,0,0,.42);
-}
 
-.owner-tag {
-  position: absolute;
+  document.getElementById("modalCategory")
+    .textContent = product.category;
 
-  left: 10px;
 
-  bottom: 12px;
+  document.getElementById("modalBenefits")
+    .textContent = product.benefits;
 
-  max-width: calc(100% - 20px);
 
-  background: rgba(8,16,13,.92);
+  document.getElementById("modalUse")
+    .textContent = product.use;
 
-  border: 1px solid var(--line);
 
-  backdrop-filter: blur(12px);
+  document.getElementById("modalIngredients")
+    .textContent = product.ingredients;
 
-  padding: 9px 13px;
 
-  border-radius: 12px;
-}
+  /* WHATSAPP MESSAGE */
 
-.owner-tag span {
-  display: block;
+  const message =
 
-  color: var(--green);
+`🌿 WELCOME TO VITAL ROOTS 🌿
 
-  font-size: 8px;
+Hello, I am interested in this product.
 
-  letter-spacing: 1.7px;
+📦 Product: ${product.name}
+🏷️ Brand: ${product.brand}
+📌 Category: ${product.category}
 
-  font-weight: 900;
-}
+💰 Please tell me the current price and availability.
 
-.owner-tag strong {
-  font-size: 13px;
+📏 Please also tell me the available size/flavour options.
+
+📍 Vital Roots
+Soro, Odisha
+
+📞 7077247074
+
+━━━━━━━━━━━━━━
+
+ନମସ୍କାର 🙏
+
+ମୁଁ ଏହି ପ୍ରଡକ୍ଟ ବିଷୟରେ
+ଜାଣିବାକୁ ଚାହୁଁଛି।
+
+ଦୟାକରି ଏହାର ଦାମ ଏବଂ
+availability ବିଷୟରେ କୁହନ୍ତୁ।
+
+Thank you! 🙏`;
+
+
+  document.getElementById("modalWhatsapp").href =
+    "https://wa.me/" +
+    WHATSAPP_NUMBER +
+    "?text=" +
+    encodeURIComponent(message);
+
+
+  modal.classList.add("show");
+
+  modal.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+
+  document.body.classList.add("modal-open");
+
 }
 
 
 /* =====================================================
-   TRUST STRIP
+   CLOSE PRODUCT
 ===================================================== */
 
-.trust-strip {
-  width: 100%;
-  max-width: 1250px;
+function closeProduct() {
 
-  margin: auto;
+  const modal =
+    document.getElementById("productModal");
 
-  border-top: 1px solid var(--line);
 
-  border-bottom: 1px solid var(--line);
+  modal.classList.remove("show");
 
-  display: grid;
+  modal.setAttribute(
+    "aria-hidden",
+    "true"
+  );
 
-  grid-template-columns: repeat(2, 1fr);
-}
 
-.trust-strip div {
-  min-width: 0;
+  document.body.classList.remove(
+    "modal-open"
+  );
 
-  min-height: 58px;
-
-  padding: 9px 6px;
-
-  display: flex;
-
-  justify-content: center;
-
-  align-items: center;
-
-  gap: 5px;
-
-  color: #d5ddd8;
-
-  font-size: 9px;
-
-  text-align: center;
-
-  border-right: 1px solid var(--line);
-
-  border-bottom: 1px solid var(--line);
-}
-
-.trust-strip div:nth-child(2n) {
-  border-right: 0;
-}
-
-.trust-strip div:nth-last-child(-n+2) {
-  border-bottom: 0;
-}
-
-.trust-strip b {
-  color: var(--green);
-
-  font-size: 12px;
 }
 
 
 /* =====================================================
-   SECTIONS
+   BRAND FILTER
 ===================================================== */
 
-.section {
-  width: 100%;
-  max-width: 1250px;
+document
+  .querySelectorAll(".brand-btn")
+  .forEach(function(button) {
 
-  margin: auto;
+    button.addEventListener(
+      "click",
+      function() {
 
-  padding:
-    58px
-    max(15px, env(safe-area-inset-right))
-    58px
-    max(15px, env(safe-area-inset-left));
-}
+        document
+          .querySelectorAll(".brand-btn")
+          .forEach(function(btn) {
 
-.section-heading {
-  width: 100%;
+            btn.classList.remove(
+              "active"
+            );
 
-  display: block;
+          });
 
-  margin-bottom: 24px;
-}
 
-.section-heading h2 {
-  font-size: clamp(29px, 8vw, 47px);
+        this.classList.add("active");
 
-  line-height: 1.05;
 
-  letter-spacing: -1px;
+        activeBrand =
+          this.dataset.brand;
 
-  margin-top: 7px;
-}
 
-.section-heading > p {
-  margin-top: 10px;
+        renderProducts();
 
-  color: var(--muted);
 
-  max-width: 420px;
+        /* Keep selected brand visible */
 
-  font-size: 11px;
-}
+        this.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "center"
+        });
 
-.center {
-  text-align: center;
-}
-
-
-/* =====================================================
-   SHOP
-===================================================== */
-
-.shop-layout {
-  width: 100%;
-
-  display: grid;
-
-  grid-template-columns: 1fr;
-
-  gap: 15px;
-}
-
-
-/* MOBILE BRAND BAR */
-
-.brand-panel {
-  width: 100%;
-
-  min-width: 0;
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 7px;
-
-  overflow-x: auto;
-
-  overflow-y: hidden;
-
-  scrollbar-width: none;
-
-  padding: 7px;
-
-  background: var(--card);
-
-  border: 1px solid var(--line);
-
-  border-radius: 15px;
-
-  -webkit-overflow-scrolling: touch;
-}
-
-.brand-panel::-webkit-scrollbar {
-  display: none;
-}
-
-.brand-title {
-  display: none;
-}
-
-.brand-btn {
-  flex: 0 0 auto;
-
-  border: 1px solid transparent;
-
-  background: transparent;
-
-  color: #aebbb3;
-
-  padding: 9px 12px;
-
-  min-height: 36px;
-
-  border-radius: 10px;
-
-  white-space: nowrap;
-
-  cursor: pointer;
-
-  font-weight: 900;
-
-  font-size: 10px;
-}
-
-.brand-btn.active {
-  background: var(--green);
-
-  color: #08100d;
-}
-
-
-/* =====================================================
-   PRODUCT GRID
-===================================================== */
-
-.product-area {
-  width: 100%;
-
-  min-width: 0;
-}
-
-.products-grid {
-  width: 100%;
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(2, minmax(0, 1fr));
-
-  gap: 9px;
-}
-
-.product-card {
-  min-width: 0;
-
-  background: var(--card);
-
-  border: 1px solid var(--line);
-
-  border-radius: 14px;
-
-  overflow: hidden;
-
-  cursor: pointer;
-
-  transition: transform .2s, border-color .2s;
-}
-
-.product-card:active {
-  transform: scale(.985);
-}
-
-.product-img {
-  width: 100%;
-
-  aspect-ratio: 1 / 1;
-
-  min-height: 0;
-
-  background: #111814;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  overflow: hidden;
-}
-
-.product-img img {
-  display: block;
-
-  width: 100%;
-
-  height: 100%;
-
-  object-fit: contain;
-
-  padding: 7px;
-}
-
-.product-content {
-  padding: 9px 9px 11px;
-}
-
-.product-brand {
-  overflow: hidden;
-
-  white-space: nowrap;
-
-  text-overflow: ellipsis;
-
-  font-size: 7px;
-
-  letter-spacing: 1px;
-
-  color: var(--green);
-
-  font-weight: 900;
-
-  text-transform: uppercase;
-}
-
-.product-name {
-  display: -webkit-box;
-
-  -webkit-line-clamp: 2;
-
-  -webkit-box-orient: vertical;
-
-  overflow: hidden;
-
-  min-height: 31px;
-
-  font-size: 11px;
-
-  font-weight: 900;
-
-  line-height: 1.35;
-
-  margin: 4px 0;
-}
-
-.product-cat {
-  overflow: hidden;
-
-  white-space: nowrap;
-
-  text-overflow: ellipsis;
-
-  color: var(--muted);
-
-  font-size: 8px;
-}
-
-.view-product {
-  margin-top: 7px;
-
-  color: var(--green);
-
-  font-size: 8px;
-
-  font-weight: 900;
-}
-
-
-/* =====================================================
-   BRANDS
-===================================================== */
-
-.brand-cards {
-  width: 100%;
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(2, minmax(0,1fr));
-
-  gap: 9px;
-
-  margin: 25px auto 0;
-}
-
-.big-brand {
-  min-width: 0;
-
-  background: var(--card);
-
-  border: 1px solid var(--line);
-
-  border-radius: 15px;
-
-  padding: 14px 10px;
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 9px;
-}
-
-.big-brand strong {
-  flex: 0 0 auto;
-
-  width: 38px;
-  height: 38px;
-
-  display: grid;
-
-  place-items: center;
-
-  border-radius: 10px;
-
-  background: var(--green);
-
-  color: #08100d;
-
-  font-size: 11px;
-}
-
-.big-brand span {
-  min-width: 0;
-
-  overflow: hidden;
-
-  text-overflow: ellipsis;
-
-  white-space: nowrap;
-
-  font-size: 10px;
-
-  font-weight: 800;
-}
-
-
-/* =====================================================
-   ABOUT
-===================================================== */
-
-.about-section {
-  display: grid;
-
-  grid-template-columns: 1fr;
-
-  gap: 28px;
-
-  align-items: center;
-}
-
-.about-image {
-  width: 100%;
-
-  max-width: 500px;
-
-  height: min(105vw, 450px);
-
-  min-height: 300px;
-
-  margin: auto;
-
-  overflow: hidden;
-
-  border-radius: 23px;
-
-  border: 1px solid var(--line);
-
-  background: var(--card);
-}
-
-.about-image img {
-  width: 100%;
-
-  height: 100%;
-
-  object-fit: cover;
-}
-
-.about-content h2 {
-  font-size: clamp(31px, 8vw, 50px);
-
-  line-height: 1.05;
-
-  letter-spacing: -1px;
-
-  margin: 9px 0 15px;
-}
-
-.about-content p {
-  color: var(--muted);
-
-  margin-bottom: 12px;
-
-  font-size: 12px;
-}
-
-
-/* =====================================================
-   WHY
-===================================================== */
-
-.why-section {
-  width: 100%;
-
-  background: #0b1511;
-
-  padding:
-    58px
-    max(15px, env(safe-area-inset-right))
-    58px
-    max(15px, env(safe-area-inset-left));
-}
-
-.why-grid {
-  width: 100%;
-
-  max-width: 1050px;
-
-  margin: 25px auto 0;
-
-  display: grid;
-
-  grid-template-columns: 1fr;
-
-  gap: 10px;
-}
-
-.why-grid article {
-  background: var(--card);
-
-  border: 1px solid var(--line);
-
-  border-radius: 17px;
-
-  padding: 19px;
-}
-
-.why-icon {
-  width: 40px;
-  height: 40px;
-
-  border-radius: 11px;
-
-  background: var(--green);
-
-  color: #08100d;
-
-  display: grid;
-
-  place-items: center;
-
-  font-weight: 1000;
-
-  margin-bottom: 13px;
-}
-
-.why-grid h3 {
-  font-size: 15px;
-
-  margin-bottom: 5px;
-}
-
-.why-grid p {
-  color: var(--muted);
-
-  font-size: 11px;
-}
-
-
-/* =====================================================
-   CONTACT
-===================================================== */
-
-.contact-section {
-  width: calc(100% - 30px);
-
-  max-width: 1180px;
-
-  margin: 40px auto;
-
-  padding: 28px 20px;
-
-  border-radius: 22px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #18321f,
-      #0f1a14
+      }
     );
 
-  border: 1px solid var(--line);
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: stretch;
-
-  gap: 18px;
-}
-
-.contact-section h2 {
-  font-size: clamp(29px, 8vw, 46px);
-
-  line-height: 1.05;
-
-  margin: 7px 0 9px;
-}
-
-.contact-section p {
-  color: var(--muted);
-
-  font-size: 11px;
-}
-
-.contact-section .btn {
-  width: 100%;
-}
-
-.btn-light {
-  background: #fff;
-
-  color: #08100d;
-}
+  });
 
 
 /* =====================================================
-   PRODUCT MODAL - MOBILE FIRST
+   ESCAPE KEY
 ===================================================== */
 
-.modal {
-  display: none;
+document.addEventListener(
+  "keydown",
+  function(event) {
 
-  position: fixed;
+    if (event.key === "Escape") {
 
-  inset: 0;
+      closeProduct();
 
-  z-index: 200;
+    }
 
-  padding: 0;
-
-  align-items: flex-end;
-
-  justify-content: center;
-}
-
-.modal.show {
-  display: flex;
-}
-
-.modal-backdrop {
-  position: absolute;
-
-  inset: 0;
-
-  background: rgba(0,0,0,.80);
-
-  backdrop-filter: blur(6px);
-}
-
-.modal-box {
-  position: relative;
-
-  width: 100%;
-
-  max-width: 900px;
-
-  height: min(94dvh, 760px);
-
-  overflow-y: auto;
-
-  overflow-x: hidden;
-
-  -webkit-overflow-scrolling: touch;
-
-  background: #0d1713;
-
-  border: 1px solid var(--line);
-
-  border-radius: 22px 22px 0 0;
-
-  display: grid;
-
-  grid-template-columns: 1fr;
-
-  z-index: 1;
-
-  animation: modalUp .22s ease;
-}
-
-@keyframes modalUp {
-  from {
-    transform: translateY(100%);
   }
-
-  to {
-    transform: translateY(0);
-  }
-}
-
-.modal-close {
-  position: fixed;
-
-  right: 13px;
-
-  top: 13px;
-
-  width: 39px;
-
-  height: 39px;
-
-  border: 1px solid rgba(255,255,255,.15);
-
-  border-radius: 50%;
-
-  background: rgba(10,18,14,.9);
-
-  color: #fff;
-
-  font-size: 25px;
-
-  line-height: 1;
-
-  cursor: pointer;
-
-  z-index: 10;
-}
-
-.modal-product-image {
-  width: 100%;
-
-  height: 290px;
-
-  background: #111814;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-}
-
-.modal-product-image img {
-  width: 100%;
-
-  height: 100%;
-
-  object-fit: contain;
-
-  padding: 20px 45px;
-}
-
-.modal-info {
-  padding: 20px 16px 30px;
-}
-
-.modal-brand {
-  font-size: 9px;
-
-  letter-spacing: 1.7px;
-
-  color: var(--green);
-
-  font-weight: 900;
-}
-
-.modal-info h2 {
-  max-width: 90%;
-
-  font-size: 25px;
-
-  line-height: 1.12;
-
-  margin: 6px 0;
-}
-
-.modal-category {
-  color: var(--muted);
-
-  font-size: 10px;
-
-  margin-bottom: 10px;
-}
-
-.detail-block {
-  border-top: 1px solid var(--line);
-
-  padding: 12px 0;
-}
-
-.detail-block h3 {
-  font-size: 11px;
-
-  color: var(--green);
-
-  margin-bottom: 3px;
-}
-
-.detail-block p {
-  color: #c4cec8;
-
-  font-size: 11px;
-
-  line-height: 1.55;
-}
-
-.auth-note {
-  background: rgba(183,255,53,.07);
-
-  border: 1px solid var(--line);
-
-  padding: 10px;
-
-  border-radius: 10px;
-
-  color: #c9d5cd;
-
-  font-size: 9px;
-
-  line-height: 1.5;
-
-  margin: 12px 0;
-}
-
-.modal-order {
-  width: 100%;
-}
+);
 
 
 /* =====================================================
-   FLOATING WHATSAPP
+   PREVENT BACKGROUND TOUCH SCROLL WHEN MODAL OPEN
 ===================================================== */
 
-.floating-wa {
-  position: fixed;
+document
+  .getElementById("productModal")
+  .addEventListener(
+    "touchmove",
+    function(event) {
 
-  right: max(13px, env(safe-area-inset-right));
+      event.stopPropagation();
 
-  bottom: max(13px, env(safe-area-inset-bottom));
-
-  width: 52px;
-
-  height: 52px;
-
-  border-radius: 50%;
-
-  display: grid;
-
-  place-items: center;
-
-  background: var(--green);
-
-  color: #08100d;
-
-  font-size: 21px;
-
-  box-shadow:
-    0 8px 28px rgba(0,0,0,.45);
-
-  z-index: 90;
-}
+    },
+    { passive: true }
+  );
 
 
 /* =====================================================
-   FOOTER
+   YEAR
 ===================================================== */
 
-footer {
-  width: 100%;
-
-  border-top: 1px solid var(--line);
-
-  padding:
-    30px
-    max(15px, env(safe-area-inset-right))
-    max(30px, env(safe-area-inset-bottom))
-    max(15px, env(safe-area-inset-left));
-
-  display: grid;
-
-  grid-template-columns: 1fr;
-
-  gap: 16px;
-
-  max-width: 1250px;
-
-  margin: auto;
-
-  color: var(--muted);
-
-  font-size: 10px;
-}
-
-footer strong {
-  color: var(--text);
-
-  font-size: 18px;
-}
-
-.footer-bottom {
-  border-top: 1px solid var(--line);
-
-  padding-top: 17px;
-
-  grid-column: 1 / -1;
-}
+document.getElementById("year")
+  .textContent =
+  new Date().getFullYear();
 
 
 /* =====================================================
-   VERY SMALL PHONES - 320px to 360px
+   START
 ===================================================== */
 
-@media (max-width:360px) {
-
-  .header-inner {
-    min-height: 64px;
-
-    padding-left: 11px;
-    padding-right: 11px;
-  }
-
-  .logo-mark {
-    width: 38px;
-    height: 38px;
-
-    border-radius: 11px;
-  }
-
-  .logo strong {
-    font-size: 15px;
-  }
-
-  .logo small {
-    font-size: 7px;
-  }
-
-  .header-wa {
-    padding: 8px 8px;
-
-    font-size: 9px;
-  }
-
-  .hero {
-    padding-top: 30px;
-  }
-
-  .hero h1 {
-    font-size: 38px;
-  }
-
-  .product-content {
-    padding-left: 8px;
-    padding-right: 8px;
-  }
-
-  .product-name {
-    font-size: 10px;
-  }
-
-  .product-img {
-    aspect-ratio: .95 / 1;
-  }
-
-  .big-brand {
-    padding: 11px 8px;
-  }
-
-  .big-brand strong {
-    width: 34px;
-    height: 34px;
-  }
-
-  .big-brand span {
-    font-size: 9px;
-  }
-
-}
-
-
-/* =====================================================
-   TABLET
-===================================================== */
-
-@media (min-width:700px) {
-
-  .header-inner {
-    min-height: 76px;
-  }
-
-  .desktop-nav {
-    display: flex;
-
-    gap: 22px;
-
-    color: #dce5df;
-
-    font-size: 13px;
-  }
-
-  .header-wa {
-    padding: 10px 13px;
-
-    font-size: 11px;
-  }
-
-  .hero {
-    grid-template-columns: 1.05fr .95fr;
-
-    padding-top: 70px;
-
-    padding-bottom: 60px;
-  }
-
-  .hero-buttons {
-    display: flex;
-
-    width: auto;
-  }
-
-  .hero-buttons .btn {
-    width: auto;
-  }
-
-  .owner-photo {
-    height: min(48vw, 430px);
-  }
-
-  .trust-strip {
-    grid-template-columns: repeat(4,1fr);
-  }
-
-  .trust-strip div {
-    border-bottom: 0;
-  }
-
-  .trust-strip div:nth-child(2n) {
-    border-right: 1px solid var(--line);
-  }
-
-  .trust-strip div:last-child {
-    border-right: 0;
-  }
-
-  .products-grid {
-    grid-template-columns:
-      repeat(3, minmax(0,1fr));
-
-    gap: 13px;
-  }
-
-  .product-content {
-    padding: 12px;
-  }
-
-  .product-name {
-    font-size: 13px;
-  }
-
-  .product-brand {
-    font-size: 8px;
-  }
-
-  .product-cat {
-    font-size: 9px;
-  }
-
-  .view-product {
-    font-size: 9px;
-  }
-
-  .brand-cards {
-    grid-template-columns: repeat(3,1fr);
-  }
-
-  .about-section {
-    grid-template-columns: .9fr 1.1fr;
-  }
-
-  .why-grid {
-    grid-template-columns: repeat(3,1fr);
-  }
-
-  .contact-section {
-    flex-direction: row;
-
-    align-items: center;
-  }
-
-  .contact-section .btn {
-    width: auto;
-
-    flex: 0 0 auto;
-  }
-
-  .modal {
-    padding: 15px;
-
-    align-items: center;
-  }
-
-  .modal-box {
-    height: min(92vh,760px);
-
-    border-radius: 22px;
-
-    grid-template-columns: .9fr 1.1fr;
-  }
-
-  .modal-product-image {
-    height: 100%;
-  }
-
-  .modal-close {
-    position: absolute;
-  }
-
-  footer {
-    grid-template-columns: 1fr 1fr;
-  }
-
-}
-
-
-/* =====================================================
-   LAPTOP
-===================================================== */
-
-@media (min-width:1000px) {
-
-  .shop-layout {
-    grid-template-columns: 145px 1fr;
-
-    align-items: start;
-  }
-
-  .brand-panel {
-    position: sticky;
-
-    top: 95px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    overflow: visible;
-
-    padding: 9px;
-  }
-
-  .brand-title {
-    display: block;
-
-    padding: 12px 10px 8px;
-
-    color: var(--green);
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
-
-    font-weight: 900;
-  }
-
-  .brand-btn {
-    width: 100%;
-
-    text-align: left;
-  }
-
-  .products-grid {
-    grid-template-columns:
-      repeat(4, minmax(0,1fr));
-  }
-
-  .product-img {
-    aspect-ratio: 1 / 1;
-  }
-
-}
-
-
-/* =====================================================
-   LARGE SCREEN
-===================================================== */
-
-@media (min-width:1200px) {
-
-  .hero {
-    padding-top: 85px;
-  }
-
-  .section {
-    padding-top: 85px;
-    padding-bottom: 85px;
-  }
-
-}
+renderProducts();
