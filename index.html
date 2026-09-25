@@ -1,553 +1,525 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="theme-color" content="#070a09">
+<meta name="theme-color" content="#07100b">
 
-  <title>Vital Roots | Authentic Nutrition</title>
+<title>Vital Roots | Nutrition Store</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
+<!-- HEADER -->
 
-<header class="topbar">
+<header class="header">
 
-  <a class="brand" href="#home">
+    <a href="#home" class="logo">
 
-    <span class="brand-mark">VR</span>
+        <div class="logo-box">
+            VR
+        </div>
 
-    <span>
-      <strong>VITAL ROOTS</strong>
-      <small>Authentic Nutrition</small>
-    </span>
+        <div>
+            <strong>VITAL ROOTS</strong>
+            <small>Authentic Nutrition Store</small>
+        </div>
 
-  </a>
+    </a>
 
-  <a
-    class="mini-wa"
-    href="#"
-    onclick="openWhatsApp('Hello Vital Roots! I want to know more about your products.'); return false;"
-  >
-    WhatsApp
-  </a>
+    <a
+        class="header-wa"
+        href="#"
+        onclick="openGeneralWhatsApp(); return false;"
+    >
+        WhatsApp
+    </a>
 
 </header>
 
 
-<!-- ================= MAIN ================= -->
-
 <main id="home">
 
-
-<!-- ================= HERO ================= -->
+<!-- HERO -->
 
 <section class="hero">
 
-  <div class="hero-glow"></div>
+    <div class="hero-top">
 
-  <div class="hero-content">
+        <span class="small-title">
+            AUTHENTIC NUTRITION STORE
+        </span>
 
-    <span class="eyebrow">
-      AUTHENTIC • QUALITY • TRUST
-    </span>
+        <h1>
+            VITAL <span>ROOTS</span>
+        </h1>
 
-    <h1>
-      Fuel Your<br>
-      <span>Better Self.</span>
-    </h1>
+        <p class="tagline">
+            Your trusted destination for quality nutrition products.
+        </p>
 
-    <p>
-      Quality nutrition products for your fitness and wellness journey.
-    </p>
+        <p class="odia">
+            Quality nutrition products ପାଇଁ ଆପଣଙ୍କ trusted destination।
+        </p>
 
-    <p class="odia">
-      ଆପଣଙ୍କ fitness ଓ wellness journey ପାଇଁ quality nutrition products.
-    </p>
-
-    <div class="hero-actions">
-
-      <a class="primary-btn" href="#products">
-        Explore Products
-        <span>→</span>
-      </a>
-
-      <a class="ghost-btn" href="#owner">
-        Meet the Owner
-      </a>
+        <div class="location">
+            📍 <span>Soro, Odisha</span>
+        </div>
 
     </div>
 
-  </div>
 
+    <div class="hero-buttons">
 
-  <div class="hero-badge">
+        <a href="#products" class="shop-btn">
+            Shop Products
+            <b>→</b>
+        </a>
 
-    <b>100%</b>
+        <a
+            href="#"
+            class="contact-btn"
+            onclick="openGeneralWhatsApp(); return false;"
+        >
+            Contact Us
+        </a>
 
-    <span>
-      AUTHENTICITY<br>
-      FOCUSED
-    </span>
-
-  </div>
-
-</section>
-
-
-
-<!-- ================= TRUST STRIP ================= -->
-
-<section class="trust-strip">
-
-  <div>
-    <b>✓</b>
-    <span>Authentic Products</span>
-  </div>
-
-  <div>
-    <b>✓</b>
-    <span>Product Guidance</span>
-  </div>
-
-  <div>
-    <b>✓</b>
-    <span>WhatsApp Ordering</span>
-  </div>
+    </div>
 
 </section>
 
 
+<!-- QUICK INFO -->
 
-<!-- ================= PRODUCTS ================= -->
-
-<section class="section" id="products">
-
-  <div class="section-head">
+<section class="quick-info">
 
     <div>
-
-      <span class="eyebrow">
-        SHOP COLLECTION
-      </span>
-
-      <h2>
-        Popular Nutrition
-      </h2>
-
-      <p>
-        Tap any product to see details.
-      </p>
-
+        <b>✓</b>
+        <span>Authentic Products</span>
     </div>
 
-
-    <div class="filter-row">
-
-      <button
-        class="filter active"
-        data-category="all"
-      >
-        All
-      </button>
-
-      <button
-        class="filter"
-        data-category="protein"
-      >
-        Protein
-      </button>
-
-      <button
-        class="filter"
-        data-category="performance"
-      >
-        Performance
-      </button>
-
-      <button
-        class="filter"
-        data-category="wellness"
-      >
-        Wellness
-      </button>
-
+    <div>
+        <b>✓</b>
+        <span>Original Brands</span>
     </div>
 
-  </div>
-
-
-  <div
-    id="productGrid"
-    class="product-grid"
-  ></div>
+    <div>
+        <b>✓</b>
+        <span>Direct WhatsApp Order</span>
+    </div>
 
 </section>
 
 
+<!-- BRANDS -->
 
-<!-- ================= OWNER ================= -->
+<section class="brands-section">
+
+    <div class="section-title">
+
+        <span>SHOP BY BRAND</span>
+
+        <h2>
+            Popular Brands
+        </h2>
+
+    </div>
+
+
+    <div class="brand-grid">
+
+        <button
+            class="brand-card"
+            onclick="filterBrand('MuscleBlaze')"
+        >
+            <div class="brand-logo mb">
+                MB
+            </div>
+            <strong>MuscleBlaze</strong>
+        </button>
+
+
+        <button
+            class="brand-card"
+            onclick="filterBrand('Optimum Nutrition')"
+        >
+            <div class="brand-logo on">
+                ON
+            </div>
+            <strong>Optimum Nutrition</strong>
+        </button>
+
+
+        <button
+            class="brand-card"
+            onclick="filterBrand('AS-IT-IS')"
+        >
+            <div class="brand-logo asit">
+                AS
+            </div>
+            <strong>AS-IT-IS</strong>
+        </button>
+
+
+        <button
+            class="brand-card"
+            onclick="filterBrand('MuscleTech')"
+        >
+            <div class="brand-logo mt">
+                MT
+            </div>
+            <strong>MuscleTech</strong>
+        </button>
+
+
+        <button
+            class="brand-card"
+            onclick="filterBrand('GNC')"
+        >
+            <div class="brand-logo gnc">
+                GNC
+            </div>
+            <strong>GNC</strong>
+        </button>
+
+
+        <button
+            class="brand-card"
+            onclick="filterBrand('Nutrabay')"
+        >
+            <div class="brand-logo nb">
+                NB
+            </div>
+            <strong>Nutrabay</strong>
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- PRODUCTS -->
 
 <section
-  class="about-section"
-  id="owner"
+    class="products-section"
+    id="products"
 >
 
-  <div class="owner-photo-wrap">
+    <div class="section-heading">
 
-    <img
-      src="owner.png"
-      alt="Vital Roots Owner"
-    >
+        <div>
 
-    <span class="owner-tag">
-      VITAL ROOTS
-    </span>
+            <span>OUR COLLECTION</span>
 
-  </div>
+            <h2>
+                Popular Products
+            </h2>
 
+        </div>
 
-  <div class="owner-copy">
-
-    <span class="eyebrow">
-      YOUR TRUST MATTERS
-    </span>
-
-    <h2>
-      Welcome to <span>Vital Roots.</span>
-    </h2>
-
-    <p>
-      We aim to make authentic nutrition products easier to discover
-      and order, with clear product information and direct customer support.
-    </p>
-
-    <p class="odia">
-      Vital Roots କୁ ସ୍ୱାଗତ। Authentic nutrition products
-      ଏବଂ direct customer support ଆମର ଲକ୍ଷ୍ୟ।
-    </p>
-
-
-    <div class="owner-sign">
-
-      <strong>
-        Founder / Owner
-      </strong>
-
-      <span>
-        Vital Roots
-      </span>
+        <button
+            class="show-all"
+            onclick="renderProducts('all')"
+        >
+            View All
+        </button>
 
     </div>
 
 
-    <a
-      class="primary-btn"
-      href="#"
-      onclick="openWhatsApp('Hello Vital Roots! I would like to know about your available products.'); return false;"
-    >
-      Chat on WhatsApp
-      <span>↗</span>
-    </a>
-
-  </div>
+    <div
+        id="productGrid"
+        class="product-grid"
+    ></div>
 
 </section>
 
 
+<!-- OWNER -->
 
-<!-- ================= WHY VITAL ROOTS ================= -->
+<section class="owner-section">
 
-<section class="why section">
+    <div class="owner-image">
 
-  <div class="section-head centered">
+        <img
+            src="owner.png"
+            alt="Vital Roots Owner"
+        >
 
-    <span class="eyebrow">
-      WHY VITAL ROOTS
-    </span>
-
-    <h2>
-      Simple. Clear. Trusted.
-    </h2>
-
-  </div>
+    </div>
 
 
-  <div class="why-grid">
+    <div class="owner-content">
 
-    <article>
+        <span>
+            WELCOME TO VITAL ROOTS
+        </span>
 
-      <span>01</span>
+        <h2>
+            Nutrition you can trust.
+        </h2>
 
-      <h3>
-        Authenticity
-      </h3>
+        <p>
+            We provide quality nutrition products with clear product
+            information and direct customer support.
+        </p>
 
-      <p>
-        Product authenticity and label information can be checked
-        before purchase.
-      </p>
+        <p class="odia">
+            ଆମେ quality nutrition products ସହିତ
+            clear product information ଏବଂ direct customer support ପ୍ରଦାନ କରୁଛୁ।
+        </p>
 
-    </article>
+        <a
+            href="#"
+            onclick="openGeneralWhatsApp(); return false;"
+            class="owner-contact"
+        >
+            Contact Vital Roots →
+        </a>
 
-
-    <article>
-
-      <span>02</span>
-
-      <h3>
-        Guidance
-      </h3>
-
-      <p>
-        Understand product use, ingredients and basic product
-        information before ordering.
-      </p>
-
-    </article>
-
-
-    <article>
-
-      <span>03</span>
-
-      <h3>
-        Easy Ordering
-      </h3>
-
-      <p>
-        Choose a product and contact Vital Roots directly through WhatsApp.
-      </p>
-
-    </article>
-
-  </div>
+    </div>
 
 </section>
 
 
+<!-- WHY -->
 
-<!-- ================= CTA ================= -->
+<section class="why-section">
 
-<section class="cta">
+    <div class="section-title center">
 
-  <div>
+        <span>WHY US</span>
 
-    <span class="eyebrow">
-      READY TO ORDER?
+        <h2>
+            Simple & Trusted
+        </h2>
+
+    </div>
+
+
+    <div class="why-grid">
+
+        <div>
+            <b>01</b>
+            <h3>Authentic</h3>
+            <p>We focus on genuine nutrition products.</p>
+        </div>
+
+        <div>
+            <b>02</b>
+            <h3>Clear Details</h3>
+            <p>See ingredients, uses and product information.</p>
+        </div>
+
+        <div>
+            <b>03</b>
+            <h3>Easy Order</h3>
+            <p>Order directly through WhatsApp.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FINAL CTA -->
+
+<section class="final-cta">
+
+    <span>
+        NEED A PRODUCT?
     </span>
 
     <h2>
-      Let's talk on WhatsApp.
+        Talk to Vital Roots.
     </h2>
 
     <p>
-      Product details, availability and order assistance —
-      directly from Vital Roots.
+        Product availability, price and order assistance.
     </p>
 
     <p class="odia">
-      Product ଏବଂ order ବିଷୟରେ ଜାଣିବା ପାଇଁ WhatsApp କରନ୍ତୁ।
+        Product availability, price ଏବଂ order ପାଇଁ ଆମକୁ contact କରନ୍ତୁ।
     </p>
 
-  </div>
+    <div class="cta-buttons">
 
+        <a
+            href="tel:+917077247074"
+            class="call-btn"
+        >
+            📞 Call Now
+        </a>
 
-  <a
-    class="wa-large"
-    href="#"
-    onclick="openWhatsApp('Welcome to Vital Roots! I would like to know about your products and availability.'); return false;"
-  >
+        <a
+            href="#"
+            onclick="openGeneralWhatsApp(); return false;"
+            class="wa-btn"
+        >
+            WhatsApp Order
+        </a>
 
-    <span>WhatsApp</span>
-    Order Now
-
-  </a>
+    </div>
 
 </section>
-
 
 </main>
 
 
-
-<!-- ================= FOOTER ================= -->
+<!-- FOOTER -->
 
 <footer>
 
-  <div>
-
-    <strong>
-      VITAL ROOTS
-    </strong>
+    <div class="footer-logo">
+        VITAL ROOTS
+    </div>
 
     <p>
-      Authentic Nutrition • Trusted Service
+        Authentic Nutrition Store
     </p>
 
-  </div>
+    <p>
+        📍 Soro, Odisha
+    </p>
 
-
-  <div class="footer-contact">
-
-    <span>
-      WhatsApp
-    </span>
-
-    <a
-      href="#"
-      onclick="openWhatsApp('Hello Vital Roots!'); return false;"
-    >
-      7077247074
+    <a href="tel:+917077247074">
+        📞 7077247074
     </a>
-
-  </div>
 
 </footer>
 
 
-
-<!-- ================= PRODUCT MODAL ================= -->
+<!-- PRODUCT DETAILS -->
 
 <div
-  id="productModal"
-  class="modal"
-  aria-hidden="true"
+    id="productModal"
+    class="modal"
 >
 
-  <div
-    class="modal-backdrop"
-    onclick="closeModal()"
-  ></div>
+    <div
+        class="modal-overlay"
+        onclick="closeProduct()"
+    ></div>
 
 
-  <div class="modal-card">
+    <div class="product-details">
 
-    <button
-      class="close-btn"
-      onclick="closeModal()"
-      aria-label="Close"
-    >
-      ×
-    </button>
-
-
-    <img
-      id="modalImage"
-      src=""
-      alt=""
-    >
+        <button
+            class="close"
+            onclick="closeProduct()"
+        >
+            ×
+        </button>
 
 
-    <div class="modal-body">
-
-      <span
-        id="modalCategory"
-        class="pill"
-      ></span>
-
-
-      <h2 id="modalName"></h2>
+        <img
+            id="detailImage"
+            class="detail-image"
+            src=""
+            alt=""
+        >
 
 
-      <div
-        id="modalPrice"
-        class="modal-price"
-      ></div>
+        <div class="detail-content">
+
+            <div class="detail-brand" id="detailBrand"></div>
+
+            <h2 id="detailName"></h2>
+
+            <div
+                class="detail-price"
+                id="detailPrice"
+            ></div>
 
 
+            <div class="detail-box">
 
-      <div class="detail-block">
+                <h3>
+                    Benefits
+                </h3>
 
-        <h3>
-          Benefits
-        </h3>
+                <p id="detailBenefits"></p>
 
-        <p id="modalBenefits"></p>
-
-      </div>
-
+            </div>
 
 
-      <div class="detail-block">
+            <div class="detail-box">
 
-        <h3>
-          How to use
-        </h3>
+                <h3>
+                    How to Use
+                </h3>
 
-        <p id="modalUse"></p>
+                <p id="detailUse"></p>
 
-      </div>
-
-
-
-      <div class="detail-block">
-
-        <h3>
-          Ingredients
-        </h3>
-
-        <p id="modalIngredients"></p>
-
-      </div>
+            </div>
 
 
+            <div class="detail-box">
 
-      <div class="auth-box">
+                <h3>
+                    Ingredients
+                </h3>
 
-        <b>
-          Authenticity information
-        </b>
+                <p id="detailIngredients"></p>
 
-        <p id="modalAuth"></p>
-
-      </div>
-
-
-      <p class="demo-note">
-
-        Demo website: product information, ingredients, price and
-        authenticity details should be replaced/verified against
-        the actual product label before publishing.
-
-      </p>
+            </div>
 
 
-      <button
-        id="modalOrder"
-        class="order-btn"
-      >
-        Order on WhatsApp
-      </button>
+            <div class="authenticity">
+
+                <strong>
+                    ✓ Authenticity
+                </strong>
+
+                <p id="detailAuth"></p>
+
+            </div>
+
+
+            <div class="detail-actions">
+
+                <a
+                    id="callProduct"
+                    href="tel:+917077247074"
+                    class="call-product"
+                >
+                    📞 Call
+                </a>
+
+
+                <button
+                    id="whatsappProduct"
+                    class="whatsapp-product"
+                >
+                    WhatsApp Order
+                </button>
+
+            </div>
+
+        </div>
 
     </div>
-
-  </div>
 
 </div>
 
 
-
-<!-- ================= FLOATING WHATSAPP ================= -->
+<!-- FLOATING WHATSAPP -->
 
 <a
-  class="floating-wa"
-  href="#"
-  onclick="openWhatsApp('Hello Vital Roots! I want to order a product.'); return false;"
-  aria-label="WhatsApp"
+    href="#"
+    class="floating-whatsapp"
+    onclick="openGeneralWhatsApp(); return false;"
 >
-  ⌕
+    WA
 </a>
-
 
 
 <script src="script.js"></script>
